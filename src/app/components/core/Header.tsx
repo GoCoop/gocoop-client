@@ -80,8 +80,12 @@ export default function Header(): JSX.Element {
 
             <nav className="hidden sm:block">
                 <ul className="flex gap-6">
-                    <li className="cursor-pointer">Home</li>
-                    <li className="cursor-pointer">Sobre Nós</li>
+                    <li className="cursor-pointer">
+                        <Link href="/">Home</Link>
+                    </li>
+                    <li className="cursor-pointer">
+                        <Link href="/aboutUs">Sobre Nós</Link>
+                    </li>
                 </ul>
             </nav>
 
