@@ -24,8 +24,8 @@ export default function Header(): JSX.Element {
             {
                 isMenuOpen ?
                     <svg
-                        width="24px"
-                        height="24px"
+                        width="25px"
+                        height="25px"
                         strokeWidth="1.5"
                         viewBox="0 0 24 24"
                         fill="none"
