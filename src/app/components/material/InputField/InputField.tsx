@@ -2,6 +2,7 @@ import { JSX } from "react";
 
 type Props = {
     icon?: any;
+    autoFocus?: boolean;
 }
 
 export default function InputField(props: Props): JSX.Element {
@@ -11,6 +12,7 @@ export default function InputField(props: Props): JSX.Element {
             <input
                 type="text"
                 className={`w-full p-4 ${[props.icon ? 'pl-10' : 'p-4']} border-2 rounded-2xl focus:outline-[#5DC04F]`}
+                autoFocus={props.autoFocus}
                 placeholder="Busque por uma cooperativa..."
             />
         </div>

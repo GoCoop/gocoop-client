@@ -25,6 +25,7 @@ export default function Home() {
         </svg>
         <h1 className="text-xl">Descubra cooperativas de diferentes ramos em todo o Brasil.</h1>
         <InputField
+          autoFocus={true}
           icon={
             <svg
               width="24px"
