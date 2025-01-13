@@ -28,6 +28,8 @@ export default function Home() {
         </svg>
         <h1 className="text-xl">Descubra cooperativas de diferentes ramos em todo o Brasil.</h1>
         <InputField
+          id="main-search"
+          name="main-search"
           placeholder="Busque por uma cooperativa..."
           autoFocus={true}
           icon={SearchIcon}
