@@ -1,19 +1,306 @@
 'use client'
 
-import Image from "next/image";
+import { useState } from "react";
 
 import Header from "./components/core/Header";
 import InputField from "./components/material/InputField/InputField";
 import Category from "./components/material/Category/Category";
+import Modal from "./components/material/Modal/Modal";
 
 // Icons
 import SearchIcon from "./icons/SearchIcon";
 
 export default function Home() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const categories = [
+    {
+      id: 1,
+      name: 'Alimentos',
+      icon: <svg
+        width="24px"
+        height="24px"
+        strokeWidth="1.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        color="#000000"
+      >
+        <path
+          d="M12.1471 21.2646L12 21.2351L11.8529 21.2646C9.47627 21.7399 7.23257 21.4756 5.59352 20.1643C3.96312 18.86 2.75 16.374 2.75 12C2.75 7.52684 3.75792 5.70955 5.08541 5.04581C5.77977 4.69863 6.67771 4.59759 7.82028 4.72943C8.96149 4.86111 10.2783 5.21669 11.7628 5.71153L12.0235 5.79841L12.2785 5.69638C14.7602 4.70367 16.9909 4.3234 18.5578 5.05463C20.0271 5.7403 21.25 7.59326 21.25 12C21.25 16.374 20.0369 18.86 18.4065 20.1643C16.7674 21.4756 14.5237 21.7399 12.1471 21.2646Z"
+          stroke="#EE3939"
+          strokeWidth="1.5">
+        </path>
+        <path
+          d="M12 5.5C12 3 11 2 9 2"
+          stroke="#EE3939"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    },
+    {
+      id: 2,
+      name: 'Serviços',
+      icon:
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 14 14"
+        >
+          <path
+            fill="none"
+            stroke="#2E6FD0"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M7 3h0a6.5 6.5 0 0 1 6.5 6.5v0a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1v0A6.5 6.5 0 0 1 7 3Zm0 0V1.5m-6.5 11h13"
+          />
+        </svg>
+    },
+    {
+      id: 3,
+      name: 'Indústria',
+      icon:
+        <svg
+          width="24px"
+          height="24px"
+          strokeWidth="1.5"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          color="#000000"
+        >
+          <path
+            d="M18 10C18 9 17 8 15 8C14.6978 8 14.355 8 14.0002 8C12.3434 8 11 6.65685 11 5V2"
+            stroke="#652F2F"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></path>
+          <path
+            d="M18 21H21V12H18V16.5M18 21V16.5M18 21L3 21V17L6.5 14L10.5 16.5L14.5 14L18 16.5"
+            stroke="#652F2F"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></path>
+          <path
+            d="M21 10C21 4 17 4 17 4C17 4 21 4.5 21 2"
+            stroke="#652F2F"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></path>
+        </svg>
+    },
+    {
+      id: 4,
+      name: 'Cervejas',
+      icon: <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 512 512"
+      >
+        <path
+          fill="none"
+          stroke="#D2C320"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="32"
+          d="M352 200v240a40.12 40.12 0 0 1-40 40H136a40.12 40.12 0 0 1-40-40V224"
+        />
+        <path
+          fill="none"
+          stroke="#D2C320"
+          strokeLinecap="round"
+          strokeMiterlimit="10"
+          strokeWidth="32"
+          d="M352 224h40a56.16 56.16 0 0 1 56 56v80a56.16 56.16 0 0 1-56 56h-40"
+        />
+        <path
+          fill="none"
+          stroke="#D2C320"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="32"
+          d="M224 256v160m64-160v160M160 256v160m160-304a48 48 0 0 1 0 96c-13.25 0-29.31-7.31-38-16H160c-8 22-27 32-48 32a48 48 0 0 1 0-96a47.9 47.9 0 0 1 26 9"
+        />
+        <path
+          fill="none"
+          stroke="#D2C320"
+          strokeLinecap="round"
+          strokeMiterlimit="10"
+          strokeWidth="32"
+          d="M91.86 132.43a40 40 0 1 1 60.46-52S160 91 160 96m-14.17-31.29C163.22 44.89 187.57 32 216 32c52.38 0 94 42.84 94 95.21a95 95 0 0 1-1.67 17.79"
+        />
+      </svg>
+    },
+    {
+      id: 5,
+      name: 'Crédito',
+      icon: <svg
+        width="24px"
+        height="24px"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        color="#000000"
+      >
+        <path
+          d="M22 9V17C22 18.1046 21.1046 19 20 19H4C2.89543 19 2 18.1046 2 17V7C2 5.89543 2.89543 5 4 5H20C21.1046 5 22 5.89543 22 7V9ZM22 9H6"
+          stroke="#5DC04F"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M16.5 13.3819C16.7654 13.1444 17.1158 13 17.5 13C18.3284 13 19 13.6716 19 14.5C19 15.3284 18.3284 16 17.5 16C17.1158 16 16.7654 15.8556 16.5 15.6181"
+          stroke="#5DC04F"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M16.5 13.3819C16.2346 13.1444 15.8842 13 15.5 13C14.6716 13 14 13.6716 14 14.5C14 15.3284 14.6716 16 15.5 16C15.8842 16 16.2346 15.8556 16.5 15.6181"
+          stroke="#5DC04F"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    },
+    {
+      id: 6,
+      name: 'Tecnologia',
+      icon: <svg
+        width="24px"
+        height="24px"
+        strokeWidth="1.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        color="#000000"
+      >
+        <path
+          d="M8 15.4V8.6C8 8.26863 8.26863 8 8.6 8H15.4C15.7314 8 16 8.26863 16 8.6V15.4C16 15.7314 15.7314 16 15.4 16H8.6C8.26863 16 8 15.7314 8 15.4Z"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M20 4.6V19.4C20 19.7314 19.7314 20 19.4 20H4.6C4.26863 20 4 19.7314 4 19.4V4.6C4 4.26863 4.26863 4 4.6 4H19.4C19.7314 4 20 4.26863 20 4.6Z"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M17 4V2"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M12 4V2"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M7 4V2"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M7 20V22"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M12 20V22"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M17 20V22"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M20 17H22"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M20 12H22"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M20 7H22"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M4 17H2"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          d="M4 12H2"
+          stroke="#78A9F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"></path><path d="M4 7H2" stroke="#78A9F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+    }
+  ]
+
+  const openModal = () => { setIsOpen(true); };
+  const closeModal = () => { setIsOpen(false); };
+
   return (
-    <>
-      <Header />
-      <main className="p-6 h-[calc(100vh-75px)] grid grid-rows-[max-content_max-content_max-content_1fr] gap-4 sm:justify-center sm:pt-20">
+    <> <Header />
+
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        <div className="grid gap-6">
+          <h2 className="text-xl">Selecione uma categoria</h2>
+          <div className="grid grid-cols-2 gap-4">
+            {categories.map(cat => (
+              <Category
+                key={cat.id}
+                name={cat.name}
+                icon={cat.icon}
+              />
+            ))}
+          </div>
+        </div>
+      </Modal>
+
+      <main className="p-6 h-[calc(100vh-75px)] grid grid-rows-[max-content_max-content_max-content_1fr] gap-4 sm:h-auto sm:justify-center sm:pt-20">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="50"
@@ -27,13 +314,15 @@ export default function Home() {
           />
         </svg>
         <h1 className="text-xl">Descubra cooperativas de diferentes ramos em todo o Brasil.</h1>
-        <InputField
-          id="main-search"
-          name="main-search"
-          placeholder="Busque por uma cooperativa..."
-          autoFocus={true}
-          icon={SearchIcon}
-        />
+        <form>
+          <InputField
+            id="main-search"
+            name="search"
+            placeholder="Busque por uma cooperativa..."
+            autoFocus={true}
+            icon={SearchIcon}
+          />
+        </form>
 
         <div className="grid grid-cols-2 gap-4 place-content-end sm:place-content-start sm:grid-cols-3">
           <Category
@@ -118,7 +407,12 @@ export default function Home() {
             </svg>
             <span>Indústria</span>
           </button>
-          <button className="w-full p-2 border-2 rounded-2xl col-start-1 col-end-3 sm:col-end-4">Ver mais</button>
+
+          <button
+            className="w-full p-2 border-2 rounded-2xl col-start-1 col-end-3 sm:col-end-4"
+            onClick={() => openModal()}
+          >Ver mais</button>
+
         </div>
       </main>
     </>
