@@ -1,10 +1,10 @@
 'use client'
 
-import Header from "../components/core/Header";
-import ResultBox from "../components/core/ResultBox";
-import InputField from "../components/material/InputField/InputField";
+import Header from "../../components/core/Header";
+import ResultBox from "../../components/core/ResultBox";
+import InputField from "../../components/material/InputField/InputField";
 
-import SearchIcon from "../icons/SearchIcon";
+import SearchIcon from "../../icons/SearchIcon";
 
 export default function SearchPage() {
 

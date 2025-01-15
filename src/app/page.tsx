@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 
-import Header from "./components/core/Header";
-import InputField from "./components/material/InputField/InputField";
-import Category from "./components/material/Category/Category";
-import Modal from "./components/material/Modal/Modal";
+import Header from "../components/core/Header";
+import InputField from "../components/material/InputField/InputField";
+import Category from "../components/material/Category/Category";
+import Modal from "../components/material/Modal/Modal";
 
 // Icons
-import SearchIcon from "./icons/SearchIcon";
+import SearchIcon from "../icons/SearchIcon";
 
 export default function Home() {
 
