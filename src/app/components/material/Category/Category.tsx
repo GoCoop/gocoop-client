@@ -7,7 +7,7 @@ type Props = {
 
 export default function Category(props: Props): JSX.Element {
     return (
-        <button className="w-full p-4 border-2 rounded-2xl flex flex-col gap-6 hover:bg-slate-100">
+        <button className="w-full p-4 border-x border-y rounded-2xl flex flex-col gap-6 hover:bg-slate-100">
             {props.icon}
             <span>{props.name}</span>
         </button>

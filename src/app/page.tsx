@@ -373,7 +373,7 @@ export default function Home() {
             }
           />
 
-          <button className="hidden w-full p-4 border-2 rounded-2xl flex-col gap-6 sm:flex hover:bg-slate-100">
+          <button className="hidden w-full p-4 border-x border-y rounded-2xl flex-col gap-6 sm:flex hover:bg-slate-100">
             <svg
               width="24px"
               height="24px"
@@ -409,7 +409,7 @@ export default function Home() {
           </button>
 
           <button
-            className="w-full p-2 border-2 rounded-2xl col-start-1 col-end-3 sm:col-end-4"
+            className="w-full p-2 border-x border-y rounded-2xl col-start-1 col-end-3 sm:col-end-4"
             onClick={() => openModal()}
           >Ver mais</button>
 
