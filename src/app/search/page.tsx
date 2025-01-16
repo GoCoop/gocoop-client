@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import Header from "../../components/core/Header";
 import ResultBox from "../../components/core/ResultBox";
@@ -20,19 +21,22 @@ type CoopData = {
 
 export default function SearchPage() {
 
+    const searchParams = useSearchParams();
+
     const [data, setData] = useState<CoopData[] | null>();
-    const [search, setSearch] = useState('');
+    const [searchInput, setSearchInput] = useState('');
 
     const getSearchResult = useCallback(async (searchParam: string) => {
         const res = await coops.GET({ search: searchParam });
-        console.log(res, 'res from server');
         if (res.success) {
             setData(res.data);
         }
     }, []);
 
     useEffect(() => {
-        getSearchResult('');
+        const search = searchParams.get('search');
+        search && setSearchInput(search);
+        getSearchResult(search ?? '');
     }, [getSearchResult]);
 
     return (
@@ -42,11 +46,12 @@ export default function SearchPage() {
                 <InputField
                     id="main-search"
                     name="search"
+                    defaultValue={searchInput}
                     autoFocus={true}
                     placeholder="Busque por uma cooperativa..."
                     icon={SearchIcon}
-                    onChange={(e) => setSearch(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && getSearchResult(search)}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && getSearchResult(searchInput)}
                 />
 
                 <div className="grid gap-5 sm:w-[33rem]">

@@ -9,10 +9,18 @@ import Modal from "../components/material/Modal/Modal";
 
 // Icons
 import SearchIcon from "../icons/SearchIcon";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
 
+  const router = useRouter();
+
   const [isOpen, setIsOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+
+  const searchFor = (searchInput: string) => {
+    router.push(`/search?search=${searchInput}`);
+  };
 
   const categories = [
     {
@@ -314,15 +322,15 @@ export default function Home() {
           />
         </svg>
         <h1 className="text-xl">Descubra cooperativas de diferentes ramos em todo o Brasil.</h1>
-        <form>
-          <InputField
-            id="main-search"
-            name="search"
-            placeholder="Busque por uma cooperativa..."
-            autoFocus={true}
-            icon={SearchIcon}
-          />
-        </form>
+        <InputField
+          id="main-search"
+          name="search"
+          placeholder="Busque por uma cooperativa..."
+          autoFocus={true}
+          icon={SearchIcon}
+          onChange={(e) => setSearchInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && searchFor(searchInput)}
+        />
 
         <div className="grid grid-cols-2 gap-4 place-content-end sm:place-content-start sm:grid-cols-3">
           <Category
