@@ -1,43 +1,38 @@
 'use client'
 
+import { useCallback, useEffect, useState } from "react";
+
 import Header from "../../components/core/Header";
 import ResultBox from "../../components/core/ResultBox";
 import InputField from "../../components/material/InputField/InputField";
 
 import SearchIcon from "../../icons/SearchIcon";
 
+import coops from "@/services/coops";
+
+type CoopData = {
+    id: number;
+    name: string;
+    category: string;
+    desc: string;
+    imageUrl: string;
+}
+
 export default function SearchPage() {
 
-    const data = [
-        {
-            id: 1,
-            name: 'Agrária',
-            category: 'industry',
-            desc: 'Cooperativa responsável pela produção de malte.',
-            imageUrl: '/agraria-logo.jpg'
-        },
-        {
-            id: 2,
-            name: 'Coopfam',
-            category: 'coffee',
-            desc: 'Cooperativa de cafeicultores.',
-            imageUrl: '/coopfam-logo.jpeg'
-        },
-        {
-            id: 3,
-            name: 'Sicredi',
-            category: 'banking',
-            desc: 'Cooperativa de crédito.',
-            imageUrl: '/sicredi-logo.png'
-        },
-        {
-            id: 4,
-            name: 'Aurora Alimentos',
-            category: 'food',
-            desc: 'Cooperativa de comercialização de alimentos.',
-            imageUrl: '/aurora-alimentos-logo.jpg'
+    const [data, setData] = useState<CoopData[]>([]);
+
+    const getSearchResult = useCallback(async () => {
+        const res = await coops.GET({ search: 'Agrária' });
+        console.log(res);
+        if (res.success) {
+            setData(res.data);
         }
-    ]
+    }, []);
+
+    useEffect(() => {
+        getSearchResult();
+    }, [getSearchResult]);
 
     return (
         <>
@@ -52,7 +47,7 @@ export default function SearchPage() {
                 />
 
                 <div className="grid gap-5 sm:w-[33rem]">
-                    {data.map(d => (
+                    {data && data.map(d => (
                         <ResultBox
                             key={d.id}
                             name={d.name}

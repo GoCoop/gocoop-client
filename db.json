@@ -1,0 +1,32 @@
+{
+    "coops": [
+        {
+            "id": 1,
+            "name": "Agrária",
+            "category": "industry",
+            "desc": "Cooperativa responsável pela produção de malte.",
+            "imageUrl": "/agraria-logo.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Coopfam",
+            "category": "coffee",
+            "desc": "Cooperativa de cafeicultores.",
+            "imageUrl": "/coopfam-logo.jpeg"
+        },
+        {
+            "id": 3,
+            "name": "Sicredi",
+            "category": "banking",
+            "desc": "Cooperativa de crédito.",
+            "imageUrl": "/sicredi-logo.png"
+        },
+        {
+            "id": 4,
+            "name": "Aurora Alimentos",
+            "category": "food",
+            "desc": "Cooperativa de comercialização de alimentos.",
+            "imageUrl": "/aurora-alimentos-logo.jpg"
+        }
+    ]
+}
