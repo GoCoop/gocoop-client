@@ -4,8 +4,16 @@ type Request = {
     search: string;
 }
 
+type Coop = {
+    id: number;
+    name: string;
+    category: string;
+    desc: string;
+    imageUrl: string;
+}
+
 type Response = {
-    data: any;
+    data: Coop[] | null;
     success: boolean;
     message: string;
 }
@@ -14,7 +22,7 @@ export default async function GET(req: Request): Promise<Response> {
     const api = getApi();
 
     try {
-        const res = await api.get(`/coops`);
+        const res = await api.get(`/coops?name=${req.search}`);
 
         return {
             data: res.data,
@@ -23,9 +31,9 @@ export default async function GET(req: Request): Promise<Response> {
         }
     } catch (err) {
         return {
-            data: err,
+            data: null,
             success: false,
-            message: "Error fetching GET request. Route: ('/coops')"
+            message: "Error during GET request. " + err
         }
     }
 }

@@ -20,30 +20,33 @@ type CoopData = {
 
 export default function SearchPage() {
 
-    const [data, setData] = useState<CoopData[]>([]);
+    const [data, setData] = useState<CoopData[] | null>();
+    const [search, setSearch] = useState('');
 
-    const getSearchResult = useCallback(async () => {
-        const res = await coops.GET({ search: 'Agrária' });
-        console.log(res);
+    const getSearchResult = useCallback(async (searchParam: string) => {
+        const res = await coops.GET({ search: searchParam });
+        console.log(res, 'res from server');
         if (res.success) {
             setData(res.data);
         }
     }, []);
 
     useEffect(() => {
-        getSearchResult();
+        getSearchResult('');
     }, [getSearchResult]);
 
     return (
         <>
             <Header />
-            <main className="p-6 grid gap-8 justify-center">
+            <main className="p-6 grid gap-8 sm:justify-center">
                 <InputField
                     id="main-search"
                     name="search"
                     autoFocus={true}
                     placeholder="Busque por uma cooperativa..."
                     icon={SearchIcon}
+                    onChange={(e) => setSearch(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && getSearchResult(search)}
                 />
 
                 <div className="grid gap-5 sm:w-[33rem]">

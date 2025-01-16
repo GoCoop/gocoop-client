@@ -1,4 +1,4 @@
-import React, { JSX } from "react";
+import React, { ChangeEvent, JSX, KeyboardEvent } from "react";
 
 type Props = {
     id: string;
@@ -6,6 +6,8 @@ type Props = {
     placeholder?: string;
     icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     autoFocus?: boolean;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export default function InputField({
@@ -13,7 +15,9 @@ export default function InputField({
     name,
     placeholder = 'Digite o texto',
     icon: Icon,
-    autoFocus = false
+    autoFocus = false,
+    onChange,
+    onKeyDown
 }: Props): JSX.Element {
     return (
         <div className="relative">
@@ -25,6 +29,8 @@ export default function InputField({
                 className={`w-full p-4 ${[Icon ? 'pl-10' : 'p-4']} border-x border-y rounded-2xl focus:outline-[#5DC04F]`}
                 autoFocus={autoFocus}
                 placeholder={placeholder}
+                onKeyDown={onKeyDown}
+                onChange={onChange}
             />
         </div>
     )
