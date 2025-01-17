@@ -10,6 +10,7 @@ import InputField from "../../components/material/InputField/InputField";
 import SearchIcon from "../../icons/SearchIcon";
 
 import coops from "@/services/coops";
+import ResultBoxLoader from "@/components/core/Skeletons/ResultBoxLoader";
 
 type CoopData = {
     id: number;
@@ -24,20 +25,22 @@ export default function SearchPage() {
     const searchParams = useSearchParams();
 
     const [data, setData] = useState<CoopData[] | null>();
-    const [searchInput, setSearchInput] = useState('');
+    const [searchInput, setSearchInput] = useState<string>('');
 
     const getSearchResult = useCallback(async (searchParam: string) => {
+        setData(null);
+        
         const res = await coops.GET({ search: searchParam });
         if (res.success) {
             setData(res.data);
         }
-    }, []);
+    }, [searchInput]);
 
     useEffect(() => {
         const search = searchParams.get('search');
         search && setSearchInput(search);
         getSearchResult(search ?? '');
-    }, [getSearchResult]);
+    }, []);
 
     return (
         <>
@@ -55,14 +58,21 @@ export default function SearchPage() {
                 />
 
                 <div className="grid gap-5 sm:w-[33rem]">
-                    {data && data.map(d => (
+                    {data ? data.map(d => (
                         <ResultBox
                             key={d.id}
                             name={d.name}
                             desc={d.desc}
                             imageUrl={d.imageUrl}
                         />
-                    ))}
+                    )) 
+                        : 
+                            <>
+                                <ResultBoxLoader />
+                                <ResultBoxLoader />
+                                <ResultBoxLoader />
+                            </> 
+                    }
                 </div>
             </main>
         </>
