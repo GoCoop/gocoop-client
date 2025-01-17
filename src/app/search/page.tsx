@@ -1,16 +1,16 @@
 'use client'
 
 import { useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import Header from "../../components/core/Header";
 import ResultBox from "../../components/core/ResultBox";
+import ResultBoxLoader from "@/components/core/Skeletons/ResultBoxLoader";
 import InputField from "../../components/material/InputField/InputField";
 
 import SearchIcon from "../../icons/SearchIcon";
 
 import coops from "@/services/coops";
-import ResultBoxLoader from "@/components/core/Skeletons/ResultBoxLoader";
 
 type CoopData = {
     id: number;
@@ -23,12 +23,23 @@ type CoopData = {
 export default function SearchPage() {
 
     const searchParams = useSearchParams();
+    const router = useRouter();
 
     const [data, setData] = useState<CoopData[] | null>();
     const [searchInput, setSearchInput] = useState<string>('');
 
+    const updateUrlParam = (value: string): void => {
+        const params = new URLSearchParams(window.location.search);
+        params.set('search', value);
+
+        const newUrl = `${window.location.pathname}?${params.toString()}`; 
+        router.push(newUrl);
+    }
+
     const getSearchResult = useCallback(async (searchParam: string) => {
         setData(null);
+        
+        updateUrlParam(searchParam);
         
         const res = await coops.GET({ search: searchParam });
         if (res.success) {
