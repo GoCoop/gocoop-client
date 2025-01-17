@@ -417,7 +417,7 @@ export default function Home() {
           </button>
 
           <button
-            className="w-full p-2 border-x border-y rounded-2xl col-start-1 col-end-3 sm:col-end-4"
+            className="w-full p-2 border-x border-y rounded-2xl col-start-1 col-end-3 sm:col-end-4 hover:bg-slate-100"
             onClick={() => openModal()}
           >Ver mais</button>
 
