@@ -1,5 +1,3 @@
-import { getApi } from "../api";
-
 type Request = {
     search: string;
 }
@@ -19,17 +17,30 @@ type Response = {
 }
 
 export default async function GET(req: Request): Promise<Response> {
-    const api = getApi();
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
+    const url = `${apiUrl}/coops?name=${encodeURIComponent(req.search)}`;
 
     try {
-        const res = await api.get(`/coops?name=${req.search}`);
+        const res = await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: "GET"
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            throw new Error(`Response status: ${res.status} - ${err.message || 'Unknown error'}`);
+        }
+
+        const json = await res.json();
 
         return {
-            data: res.data,
+            data: json,
             success: true,
-            message: "Request successful."
-        }
-    } catch (err) {
+            message: 'Request successful.'
+        };
+    } catch(err) {
         return {
             data: null,
             success: false,
