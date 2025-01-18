@@ -11,6 +11,7 @@ import InputField from "../../components/material/InputField/InputField";
 import SearchIcon from "../../icons/SearchIcon";
 
 import coops from "@/services/coops";
+import Link from "next/link";
 
 type CoopData = {
     id: number;
@@ -70,12 +71,13 @@ export default function SearchPage() {
 
                 <div className="grid gap-5 sm:w-[33rem]">
                     {data ? data.map(d => (
-                        <ResultBox
-                            key={d.id}
-                            name={d.name}
-                            desc={d.desc}
-                            imageUrl={d.imageUrl}
-                        />
+                        <Link href={"/details"} key={d.id}>
+                            <ResultBox
+                                name={d.name}
+                                desc={d.desc}
+                                imageUrl={d.imageUrl}
+                            />
+                        </Link>
                     )) 
                         : 
                             <>
