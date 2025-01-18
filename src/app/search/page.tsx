@@ -27,14 +27,14 @@ export default function SearchPage() {
     const router = useRouter();
 
     const [data, setData] = useState<CoopData[] | null>();
-    const [searchInput, setSearchInput] = useState<string>('');
+    const [searchInput, setSearchInput] = useState<string>(searchParams.get('search') || '');
 
     const updateUrlParam = (value: string): void => {
         const params = new URLSearchParams(window.location.search);
         params.set('search', value);
 
         const newUrl = `${window.location.pathname}?${params.toString()}`; 
-        router.push(newUrl);
+        router.replace(newUrl);
     }
 
     const getSearchResult = useCallback(async (searchParam: string) => {
@@ -49,9 +49,7 @@ export default function SearchPage() {
     }, [searchInput]);
 
     useEffect(() => {
-        const search = searchParams.get('search');
-        search && setSearchInput(search);
-        getSearchResult(search ?? '');
+        getSearchResult(searchInput);
     }, []);
 
     return (
