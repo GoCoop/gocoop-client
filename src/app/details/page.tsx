@@ -74,7 +74,7 @@ export default function DetailsPage() {
                                 width={70}
                                 height={70}
                             />
-                            <h1 className="text-lg">{d.name}</h1>
+                            <h1 className="text-lg self-center">{d.name}</h1>
                             <p className="text-sm">{d.shortDesc}</p>
                         </div>
                         <div className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
