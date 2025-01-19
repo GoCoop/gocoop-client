@@ -1,3 +1,5 @@
+import { type CategoriesT } from "@/icons/Icon/Icon";
+
 type Req = {
     id: number;
 }
@@ -5,9 +7,10 @@ type Req = {
 export type CoopDetailsT = {
     id: number;
     name: string;
+    imageUrl: string;
+    category: CategoriesT;
     shortDesc: string;
     desc: string;
-    category: string;
     location: string;
     websiteURL: string;
     workers: number;
