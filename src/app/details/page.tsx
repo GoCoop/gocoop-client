@@ -34,10 +34,11 @@ export default function DetailsPage() {
         const categories = {
             "logo": "Logo",
             "industry": "Indústria",
+            "banking": "Crédito",
             "coffee": "Café",
             "food": "Alimentos",
-            "banking": "Crédito",
-            "beer": "Cerveja"
+            "beer": "Cerveja",
+            "services": "Serviços"
         };
 
         return categories[category] || 'N/I';
