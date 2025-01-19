@@ -69,7 +69,13 @@ export default function SearchPage() {
 
                 <div className="grid gap-5 sm:w-[33rem]">
                     {data ? data.map(d => (
-                        <Link href={"/details"} key={d.id}>
+                        <Link 
+                            href={{
+                                pathname: "/details",
+                                query: { id: d.id }
+                            }} 
+                            key={d.id}
+                        >
                             <ResultBox
                                 name={d.name}
                                 desc={d.desc}
