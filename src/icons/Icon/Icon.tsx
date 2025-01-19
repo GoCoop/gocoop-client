@@ -4,6 +4,7 @@ import BankingIcon from "../BankingIcon";
 import CoffeeIcon from "../CoffeeIcon";
 import FoodIcon from "../FoodIcon";
 import BeerIcon from "../BeerIcon";
+import ServicesIcon from "../ServicesIcon";
 
 const icons = { 
     LogoIcon,
@@ -11,7 +12,8 @@ const icons = {
     BankingIcon,
     CoffeeIcon,
     FoodIcon,
-    BeerIcon
+    BeerIcon,
+    ServicesIcon
 };
 
 const labels = {
@@ -20,7 +22,8 @@ const labels = {
     "banking": "BankingIcon",
     "coffee": "CoffeeIcon",
     "food": "FoodIcon",
-    "beer": "BeerIcon"
+    "beer": "BeerIcon",
+    "services": "ServicesIcon"
 } as const;
 
 export type CategoriesT = keyof typeof labels;
