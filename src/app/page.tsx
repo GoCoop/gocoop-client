@@ -47,7 +47,7 @@ export default function Home() {
       <Modal isOpen={isOpen} onClose={closeModal}>
         <div className="grid gap-6">
           <h2 className="text-xl">Selecione uma categoria</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {categoriesData && categoriesData.map(cat => (
               <Category
                 key={cat.id}
