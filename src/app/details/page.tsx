@@ -3,17 +3,21 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import Header from "@/components/core/Header";
 
+import Icon, { type CategoriesT } from "@/icons/Icon/Icon";
+
 import coops from "@/services/coops";
-import { CoopDetailsT } from "@/services/coops/details/GET";
+import { type CoopDetailsT } from "@/services/coops/details/GET";
 
 export default function DetailsPage() {
 
     const router = useRouter();
+    const searchParams = useSearchParams();
 
+    const [coopId] = useState(searchParams.get('id') || 0);
     const [details, setDetails] = useState<CoopDetailsT[] | null>(null);
 
     const getCoopDetails = async(id: number): Promise<void> => {
@@ -22,22 +26,26 @@ export default function DetailsPage() {
         });
 
         if (res.success) {
-            console.log(res, 'success res');
             setDetails(res.data);
         };
     };
 
-    const translateCategory = (category: string): string => {
+    const translateCategory = (category: CategoriesT): string => {
         const categories = {
-            "industry": "Indústria"
+            "logo": "Logo",
+            "industry": "Indústria",
+            "coffee": "Café",
+            "food": "Alimentos",
+            "banking": "Crédito",
+            "beer": "Cerveja"
         };
 
-        return categories[category as keyof typeof categories] || 'N/I';
+        return categories[category] || 'N/I';
     }
 
     useEffect(() => {
-        getCoopDetails(1);
-    }, []);
+        getCoopDetails(coopId as number);
+    }, [coopId]);
 
     return (
         <>
@@ -51,7 +59,7 @@ export default function DetailsPage() {
                         strokeWidth="1.5" 
                         fill="none" 
                         xmlns="http://www.w3.org/2000/svg" 
-                        className="p-2 bg-slate-200 rounded-full"
+                        className="p-2 bg-slate-100 rounded-full hover:bg-slate-200"
                         color="#000000"
                     >
                         <path 
@@ -64,58 +72,33 @@ export default function DetailsPage() {
                     </svg>
                     Voltar
                 </button>
-                {details && details.map(d => (
-                    <React.Fragment key={d.id}>
+
+                {details &&
+                    <React.Fragment key={details[0].id}>
                         <div className="grid grid-cols-[max-content_1fr] gap-x-4">
                             <Image 
                                 className="row-start-1 row-end-3 rounded-full"
-                                src="/agraria-logo.jpg"
+                                src={details[0].imageUrl}
                                 alt="Logo da cooperativa"
                                 width={70}
                                 height={70}
                             />
-                            <h1 className="text-lg self-center">{d.name}</h1>
-                            <p className="text-sm">{d.shortDesc}</p>
+                            <h1 className="text-lg self-center">{details[0].name}</h1>
+                            <p className="text-sm">{details[0].shortDesc}</p>
                         </div>
-                        <div className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
-                            <svg
-                                width="24px"
-                                height="24px"
-                                strokeWidth="1.5"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                color="#000000"
-                            >
-                                <path
-                                    d="M18 10C18 9 17 8 15 8C14.6978 8 14.355 8 14.0002 8C12.3434 8 11 6.65685 11 5V2"
-                                    stroke="#652F2F"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                ></path>
-                                <path
-                                    d="M18 21H21V12H18V16.5M18 21V16.5M18 21L3 21V17L6.5 14L10.5 16.5L14.5 14L18 16.5"
-                                    stroke="#652F2F"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                ></path>
-                                <path
-                                    d="M21 10C21 4 17 4 17 4C17 4 21 4.5 21 2"
-                                    stroke="#652F2F"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                ></path>
-                            </svg>
-                            <span>{translateCategory(d.category)}</span>
-                        </div>
+
+                        <div>
+                            <div className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
+                                <Icon icon={details[0].category}/>
+                                <span>{translateCategory(details[0].category)}</span>
+                            </div>
+                        </div> 
+
                         <section className="p-3 border-y border-x rounded-lg sm:w-[33rem]">
-                            {d.desc && d.desc.split('\n').map((line, i) => (
+                            {details[0].desc && details[0].desc.split('\n').map((line, i) => (
                                 <React.Fragment key={i}>
                                     <p>{line}</p>
-                                    {(d.desc.split('\n').length - 1) > i && <br />} 
+                                    {(details[0].desc.split('\n').length - 1) > i && <br />} 
                                 </React.Fragment>
                             ))}
                         </section>
@@ -143,7 +126,7 @@ export default function DetailsPage() {
                                     strokeLinejoin="round"
                                 ></path>
                             </svg> 
-                            {d.location}
+                            {details[0].location}
                         </div>
                         <div className="p-3 border-y border-x rounded-lg flex items-center gap-2">
                             <svg 
@@ -170,11 +153,15 @@ export default function DetailsPage() {
                                     strokeLinejoin="round"
                                 ></path>
                             </svg>
-                            <Link 
-                                href={d.websiteURL} 
-                                target="_blank"
-                                className="text-sky-400 underline"
-                            >{d.websiteURL}</Link>
+                            {details[0].websiteURL ?
+                                <Link 
+                                    href={details[0].websiteURL} 
+                                    target="_blank"
+                                    className="text-sky-400 underline"
+                                >{details[0].websiteURL}</Link>    
+                                :
+                                <span>N/I</span>
+                            } 
                         </div>
                         <div className="p-3 border-y border-x rounded-lg flex items-center gap-2">
                             <svg 
@@ -212,10 +199,10 @@ export default function DetailsPage() {
                                     ></path> 
                                 </g>
                             </svg>
-                            {d.workers} cooperados
+                            {details[0].workers} cooperados
                         </div>
                     </React.Fragment>
-                ))}
+                }
             </main>
         </>
     )
