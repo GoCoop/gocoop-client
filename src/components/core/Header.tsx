@@ -74,27 +74,27 @@ export default function Header(): JSX.Element {
 
             <nav className="hidden sm:block">
                 <ul className="flex gap-6">
-                    <li className="cursor-pointer">
-                        <Link href="/">Home</Link>
-                    </li>
-                    <li className="cursor-pointer">
-                        <Link href="/aboutUs">Sobre Nós</Link>
-                    </li>
+                    <Link href="/">
+                        <li className="cursor-pointer">Home</li>
+                    </Link>
+                    <Link href="/aboutUs">
+                        <li className="cursor-pointer">Sobre Nós</li>
+                    </Link>
                 </ul>
             </nav>
 
             {
                 isMenuOpen &&
-                <nav className="sm:hidden absolute z-10 bg-white h-[calc(100vh-75px)] w-screen right-0 bottom-0 left-0 flex justify-center items-center">
-                    <ul className="flex flex-col items-center gap-6">
-                        <li className="cursor-pointer">
-                            <Link href="/">Home</Link>
-                        </li>
-                        <li className="cursor-pointer">
-                            <Link href="/aboutUs">Sobre Nós</Link>
-                        </li>
-                    </ul>
-                </nav>
+                    <nav className="sm:hidden absolute z-10 bg-white h-[calc(100vh-75px)] w-screen right-0 bottom-0 left-0 flex justify-center items-center">
+                        <ul className="flex flex-col items-center gap-6">
+                            <Link href="/">
+                                <li className="cursor-pointer">Home</li>
+                            </Link>
+                            <Link href="/aboutUs">
+                                <li className="cursor-pointer">Sobre Nós</li>
+                            </Link>
+                        </ul>
+                    </nav>
             }
         </header>
     )
