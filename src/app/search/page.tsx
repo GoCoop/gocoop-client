@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -14,84 +14,93 @@ import coops from "@/services/coops";
 import Link from "next/link";
 
 type CoopData = {
-    id: number;
-    name: string;
-    category: string;
-    desc: string;
-    imageUrl: string;
-}
+  id: number;
+  name: string;
+  category: string;
+  desc: string;
+  imageUrl: string;
+};
 
 export default function SearchPage() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-    const searchParams = useSearchParams();
-    const router = useRouter();
+  const [data, setData] = useState<CoopData[] | null>();
+  const [searchInput, setSearchInput] = useState<string>(
+    searchParams.get("search") || ""
+  );
+  const [categoryId, setCategoryId] = useState(
+    searchParams.get("category") || ""
+  );
 
-    const [data, setData] = useState<CoopData[] | null>();
-    const [searchInput, setSearchInput] = useState<string>(searchParams.get('search') || '');
+  const updateUrlParam = (value: string): void => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("search", value);
 
-    const updateUrlParam = (value: string): void => {
-        const params = new URLSearchParams(window.location.search);
-        params.set('search', value);
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    router.replace(newUrl);
+  };
 
-        const newUrl = `${window.location.pathname}?${params.toString()}`; 
-        router.replace(newUrl);
-    }
+  const getSearchResult = useCallback(
+    async (searchParam: string, categoryParam: string) => {
+      setData(null);
 
-    const getSearchResult = useCallback(async (searchParam: string) => {
-        setData(null);
-        
-        updateUrlParam(searchParam);
-        
-        const res = await coops.GET({ search: searchParam });
-        if (res.success) {
-            setData(res.data);
-        }
-    }, [searchInput]);
+      updateUrlParam(searchParam);
 
-    useEffect(() => {
-        getSearchResult(searchInput);
-    }, []);
+      const res = await coops.GET({
+        search: searchParam,
+        category: categoryParam,
+      });
+      if (res.success) {
+        setData(res.data);
+      }
+    },
+    [searchInput]
+  );
 
-    return (
-        <>
-            <Header />
-            <main className="p-6 grid gap-8 sm:justify-center">
-                <InputField
-                    id="main-search"
-                    name="search"
-                    defaultValue={searchInput}
-                    autoFocus={true}
-                    placeholder="Busque por uma cooperativa..."
-                    icon={SearchIcon}
-                    onChange={(e) => setSearchInput(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && getSearchResult(searchInput)}
-                />
+  useEffect(() => {
+    getSearchResult(searchInput, categoryId);
+  }, []);
 
-                <div className="grid gap-5 sm:w-[33rem]">
-                    {data ? data.map(d => (
-                        <Link 
-                            href={{
-                                pathname: "/details",
-                                query: { id: d.id }
-                            }} 
-                            key={d.id}
-                        >
-                            <ResultBox
-                                name={d.name}
-                                desc={d.desc}
-                                imageUrl={d.imageUrl}
-                            />
-                        </Link>
-                    )) 
-                        : 
-                            <>
-                                <ResultBoxLoader />
-                                <ResultBoxLoader />
-                                <ResultBoxLoader />
-                            </> 
-                    }
-                </div>
-            </main>
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <main className="p-6 grid gap-8 sm:justify-center">
+        <InputField
+          id="main-search"
+          name="search"
+          defaultValue={searchInput}
+          autoFocus={true}
+          placeholder="Busque por uma cooperativa..."
+          icon={SearchIcon}
+          onChange={(e) => setSearchInput(e.target.value)}
+          onKeyDown={(e) =>
+            e.key === "Enter" && getSearchResult(searchInput, categoryId)
+          }
+        />
+
+        <div className="grid gap-5 sm:w-[33rem]">
+          {data ? (
+            data.map((d) => (
+              <Link
+                href={{
+                  pathname: "/details",
+                  query: { id: d.id },
+                }}
+                key={d.id}
+              >
+                <ResultBox name={d.name} desc={d.desc} imageUrl={d.imageUrl} />
+              </Link>
+            ))
+          ) : (
+            <>
+              <ResultBoxLoader />
+              <ResultBoxLoader />
+              <ResultBoxLoader />
+            </>
+          )}
+        </div>
+      </main>
+    </>
+  );
 }
