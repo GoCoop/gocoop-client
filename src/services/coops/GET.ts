@@ -19,7 +19,7 @@ type Response = {
 
 export default async function GET(req: Request): Promise<Response> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
-  const url = `${apiUrl}/coops?name=${encodeURIComponent(
+  const url = `${apiUrl}/coops?nameno=${encodeURIComponent(
     req.search
   )}&category=${encodeURIComponent(req.category)}`;
 

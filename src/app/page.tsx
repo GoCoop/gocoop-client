@@ -1,7 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { type Metadata } from "next";
 import Link from "next/link";
 
 import Header from "../components/core/Header";
@@ -15,58 +12,26 @@ import LogoIcon from "@/icons/Logo";
 import categories from "@/services/categories";
 import { type CategoryT } from "@/services/categories/GET";
 
-export default function Home() {
-  const router = useRouter();
+export const metadata: Metadata = {
+  title: "Home | GoCoop",
+  description: "Página Home para pesquisa de cooperativas no Brasil.",
+};
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
-  const [categoriesData, setCategoriesData] = useState<CategoryT[] | null>([]);
+const getCategories = async (): Promise<CategoryT[] | null> => {
+  const res = await categories.GET();
+  if (res.success) {
+    return res.data;
+  }
 
-  const searchFor = (searchInput: string): void => {
-    router.push(`/search?search=${searchInput}`);
-  };
+  return null;
+};
 
-  const getCategories = async (): Promise<void> => {
-    const res = await categories.GET();
-    if (res.success) {
-      setCategoriesData(res.data);
-    }
-  };
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  useEffect(() => {
-    getCategories();
-  }, []);
+export default async function Home() {
+  const categories = await getCategories();
 
   return (
     <>
       <Header />
-
-      <Modal isOpen={isOpen} onClose={closeModal}>
-        <div className="grid gap-6">
-          <h2 className="text-xl">Selecione uma categoria</h2>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {categoriesData &&
-              categoriesData.map((cat) => (
-                <Link
-                  key={cat.id}
-                  href={{
-                    pathname: "/search",
-                    query: { search: searchInput, category: cat.icon },
-                  }}
-                >
-                  <Category name={cat.name} icon={cat.icon} />
-                </Link>
-              ))}
-          </div>
-        </div>
-      </Modal>
 
       <main className="p-6 h-[calc(100vh-75px)] grid grid-rows-[max-content_max-content_max-content_1fr] gap-4 sm:h-auto sm:justify-center sm:pt-20">
         <LogoIcon width="50" height="50" className="place-self-center" />
@@ -80,15 +45,14 @@ export default function Home() {
           placeholder="Busque por uma cooperativa..."
           autoFocus={true}
           icon={SearchIcon}
-          onChange={(e) => setSearchInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && searchFor(searchInput)}
+          redirectsTo="/search"
         />
 
         <div className="grid grid-cols-2 gap-4 place-content-end sm:place-content-start sm:grid-cols-3">
           <Link
             href={{
               pathname: "/search",
-              query: { search: searchInput, category: "food" },
+              query: { search: "", category: "food" },
             }}
           >
             <Category name="Alimentos" icon="food" />
@@ -97,7 +61,7 @@ export default function Home() {
           <Link
             href={{
               pathname: "/search",
-              query: { search: searchInput, category: "services" },
+              query: { search: "", category: "services" },
             }}
           >
             <Category name="Serviços" icon="services" />
@@ -106,19 +70,32 @@ export default function Home() {
           <Link
             href={{
               pathname: "/search",
-              query: { search: searchInput, category: "industry" },
+              query: { search: "", category: "industry" },
             }}
             className="hidden sm:flex"
           >
             <Category name="Indústria" icon="industry" />
           </Link>
 
-          <button
-            className="w-full p-2 border-x border-y rounded-2xl col-start-1 col-end-3 sm:col-end-4 hover:bg-slate-100"
-            onClick={() => openModal()}
-          >
-            Ver mais
-          </button>
+          <Modal>
+            <div className="grid gap-6">
+              <h2 className="text-xl">Selecione uma categoria</h2>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                {categories &&
+                  categories.map((cat) => (
+                    <Link
+                      key={cat.id}
+                      href={{
+                        pathname: "/search",
+                        query: { search: "", category: cat.icon },
+                      }}
+                    >
+                      <Category name={cat.name} icon={cat.icon} />
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          </Modal>
         </div>
       </main>
     </>

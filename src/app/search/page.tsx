@@ -1,7 +1,5 @@
-"use client";
-
-import { useCallback, useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import Link from "next/link";
+import { type Metadata } from "next";
 
 import Header from "../../components/core/Header";
 import ResultBox from "../../components/core/ResultBox";
@@ -11,56 +9,35 @@ import InputField from "../../components/material/InputField/InputField";
 import SearchIcon from "../../icons/SearchIcon";
 
 import coops from "@/services/coops";
-import Link from "next/link";
 
-type CoopData = {
-  id: number;
-  name: string;
-  category: string;
-  desc: string;
-  imageUrl: string;
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { search: string };
+}): Promise<Metadata> {
+  const { search } = await searchParams;
 
-export default function SearchPage() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const [data, setData] = useState<CoopData[] | null>();
-  const [searchInput, setSearchInput] = useState<string>(
-    searchParams.get("search") || ""
-  );
-  const [categoryId, setCategoryId] = useState(
-    searchParams.get("category") || ""
-  );
-
-  const updateUrlParam = (value: string): void => {
-    const params = new URLSearchParams(window.location.search);
-    params.set("search", value);
-
-    const newUrl = `${window.location.pathname}?${params.toString()}`;
-    router.replace(newUrl);
+  return {
+    title: `${search ? search + " |" : ""} pesquisa GoCoop`,
+    description:
+      "Página para realizar busca de cooperativas com base no input e nas categorias.",
   };
+}
 
-  const getSearchResult = useCallback(
-    async (searchParam: string, categoryParam: string) => {
-      setData(null);
+export default async function SearchPage({
+  searchParams,
+}: {
+  searchParams: { search: string | undefined; category: string | undefined };
+}) {
+  const { search, category } = await searchParams;
 
-      updateUrlParam(searchParam);
+  const coopsData = await coops.GET({
+    search: search ?? "",
+    category: category ?? "",
+  });
 
-      const res = await coops.GET({
-        search: searchParam,
-        category: categoryParam,
-      });
-      if (res.success) {
-        setData(res.data);
-      }
-    },
-    [searchInput]
-  );
-
-  useEffect(() => {
-    getSearchResult(searchInput, categoryId);
-  }, []);
+  console.log(search, "search");
+  console.log(category, "category Param");
 
   return (
     <>
@@ -69,26 +46,18 @@ export default function SearchPage() {
         <InputField
           id="main-search"
           name="search"
-          defaultValue={searchInput}
+          defaultValue={search ?? ""}
           autoFocus={true}
           placeholder="Busque por uma cooperativa..."
           icon={SearchIcon}
-          onChange={(e) => setSearchInput(e.target.value)}
-          onKeyDown={(e) =>
-            e.key === "Enter" && getSearchResult(searchInput, categoryId)
-          }
+          redirectsTo="/search"
+          categoryParam={category ?? ""}
         />
 
         <div className="grid gap-5 sm:w-[33rem]">
-          {data ? (
-            data.map((d) => (
-              <Link
-                href={{
-                  pathname: "/details",
-                  query: { id: d.id },
-                }}
-                key={d.id}
-              >
+          {coopsData && coopsData.data ? (
+            coopsData.data.map((d) => (
+              <Link href={`/details/${d.name}`} key={d.id}>
                 <ResultBox name={d.name} desc={d.desc} imageUrl={d.imageUrl} />
               </Link>
             ))

@@ -1,15 +1,21 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import React, {
   ChangeEvent,
   JSX,
   KeyboardEvent,
   useEffect,
   useRef,
+  useState,
 } from "react";
 
 type Props = {
   id: string;
   name: string;
   placeholder?: string;
+  redirectsTo: string;
+  categoryParam?: string;
   defaultValue?: string;
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   autoFocus?: boolean;
@@ -21,13 +27,21 @@ export default function InputField({
   id,
   name,
   placeholder = "Digite o texto",
+  redirectsTo,
+  categoryParam,
   defaultValue,
   icon: Icon,
   autoFocus = false,
-  onChange,
-  onKeyDown,
 }: Props): JSX.Element {
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const [searchInput, setSearchInput] = useState<string>("");
+  const handleSubmit = (querySearch: string) => {
+    router.push(
+      `${redirectsTo}?search=${querySearch}&category=${categoryParam}`
+    );
+  };
 
   useEffect(() => {
     if (inputRef.current && defaultValue) {
@@ -55,8 +69,8 @@ export default function InputField({
         ]} border-x border-y rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#5DC04F]`}
         autoFocus={autoFocus}
         placeholder={placeholder}
-        onKeyDown={onKeyDown}
-        onChange={onChange}
+        onKeyDown={(e) => e.key === "Enter" && handleSubmit(searchInput)}
+        onChange={(e) => setSearchInput(e.target.value)}
       />
     </div>
   );
