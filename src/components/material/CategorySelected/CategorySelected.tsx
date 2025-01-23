@@ -31,7 +31,7 @@ export default function CategorySelected({ search, name }: Props) {
         <span>{translateCategory(name)}</span>
         <Link
           href={`?search=${search}`}
-          className="rounded-lg hover:bg-red-200"
+          className="rounded-lg bg-slate-100 hover:bg-red-200"
         >
           <div className="p-2 m-1 cursor-pointer rounded-lg text-sm ">X</div>
         </Link>

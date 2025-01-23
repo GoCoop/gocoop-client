@@ -3,12 +3,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import Header from "@/components/core/Header";
-
-import Icon, { type CategoriesT } from "@/icons/Icon/Icon";
+import RouterBack from "@/components/core/RouterBack";
 
 import coops from "@/services/coops";
-import { type CoopDetailsT } from "@/services/coops/details/GET";
-import RouterBack from "@/components/core/RouterBack";
+
+import Icon, { type CategoriesT } from "@/icons/Icon/Icon";
 
 type Props = {
   params: Promise<{ slug: string }>;
