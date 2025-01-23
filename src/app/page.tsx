@@ -77,7 +77,12 @@ export default async function Home() {
             <Category name="Indústria" icon="industry" />
           </Link>
 
-          <Modal>
+          <Modal
+            button={{
+              name: "Ver mais",
+              className: "w-full col-start-1 col-end-3 sm:col-end-4",
+            }}
+          >
             <div className="grid gap-6">
               <h2 className="text-xl">Selecione uma categoria</h2>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">

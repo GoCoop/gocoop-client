@@ -35,8 +35,8 @@ export default function InputField({
 }: Props): JSX.Element {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
-
   const [searchInput, setSearchInput] = useState<string>("");
+
   const handleSubmit = (querySearch: string) => {
     let url = `${redirectsTo}?search=${querySearch}`;
 
