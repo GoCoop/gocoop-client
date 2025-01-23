@@ -52,7 +52,7 @@ export default async function Home() {
           <Link
             href={{
               pathname: "/search",
-              query: { search: "", category: "food" },
+              query: { category: "food" },
             }}
           >
             <Category name="Alimentos" icon="food" />
@@ -61,7 +61,7 @@ export default async function Home() {
           <Link
             href={{
               pathname: "/search",
-              query: { search: "", category: "services" },
+              query: { category: "services" },
             }}
           >
             <Category name="Serviços" icon="services" />
@@ -70,7 +70,7 @@ export default async function Home() {
           <Link
             href={{
               pathname: "/search",
-              query: { search: "", category: "industry" },
+              query: { category: "industry" },
             }}
             className="hidden sm:flex"
           >
@@ -87,7 +87,7 @@ export default async function Home() {
                       key={cat.id}
                       href={{
                         pathname: "/search",
-                        query: { search: "", category: cat.icon },
+                        query: { category: cat.icon },
                       }}
                     >
                       <Category name={cat.name} icon={cat.icon} />

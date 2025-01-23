@@ -38,9 +38,13 @@ export default function InputField({
 
   const [searchInput, setSearchInput] = useState<string>("");
   const handleSubmit = (querySearch: string) => {
-    router.push(
-      `${redirectsTo}?search=${querySearch}&category=${categoryParam}`
-    );
+    let url = `${redirectsTo}?search=${querySearch}`;
+
+    if (categoryParam) {
+      url += `&category=${categoryParam}`;
+    }
+
+    router.push(url);
   };
 
   useEffect(() => {
