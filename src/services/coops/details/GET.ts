@@ -1,4 +1,5 @@
-import { type CategoriesT } from "@/icons/Icon/Icon";
+import type { CategoriesT } from "@/icons/Icon/Icon";
+import type { Res } from "@/services/types/res";
 
 type Req = {
   name: string;
@@ -16,13 +17,7 @@ export type CoopDetailsT = {
   workers: number;
 };
 
-type Res = {
-  data: CoopDetailsT[] | null;
-  success: boolean;
-  message: string;
-};
-
-export default async function GET(req: Req): Promise<Res> {
+export default async function GET(req: Req): Promise<Res<CoopDetailsT[]>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
   const url = `${apiUrl}/details?name=${req.name}`;
 

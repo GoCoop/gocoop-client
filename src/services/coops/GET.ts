@@ -1,3 +1,5 @@
+import type { Res } from "../types/res";
+
 type Request = {
   search: string;
   category: string;
@@ -11,15 +13,10 @@ type Coop = {
   imageUrl: string;
 };
 
-type Response = {
-  data: Coop[] | null;
-  success: boolean;
-  message: string;
-};
-
-export default async function GET(req: Request): Promise<Response> {
+export default async function GET(req: Request): Promise<Res<Coop[]>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
   const url = `${apiUrl}/coops?nameno=${encodeURIComponent(
+    // Note: change nameno (json-server testing) to name
     req.search
   )}&category=${encodeURIComponent(req.category)}`;
 
