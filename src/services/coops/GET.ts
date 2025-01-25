@@ -1,6 +1,6 @@
 import type { Res } from "../types/res";
 
-type Request = {
+type Req = {
   search: string;
   category: string;
 };
@@ -13,7 +13,7 @@ type Coop = {
   imageUrl: string;
 };
 
-export default async function GET(req: Request): Promise<Res<Coop[]>> {
+export default async function GET(req: Req): Promise<Res<Coop[]>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
   const url = `${apiUrl}/coops?nameno=${encodeURIComponent(
     // Note: change nameno (json-server testing) to name
