@@ -11,8 +11,8 @@ export default function AboutUsPage() {
   return (
     <>
       <Header />
-      <main className="p-6 grid gap-5 md:grid-cols-[1fr_1fr] md:h-[calc(100vh-75px)] xl:grid-cols-[30rem_30rem] xl:justify-center xl:gap-20">
-        <div className="grid gap-5 md:place-self-start">
+      <main className="p-6 grid gap-5 lg:justify-center">
+        <div className="mt-[5rem] grid gap-5 md:place-self-start lg:w-[33rem]">
           <div className="grid gap-4">
             <h1 className="text-xl font-medium">Sobre Nós</h1>
             <p>

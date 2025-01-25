@@ -2,13 +2,17 @@
 
 import { useRouter } from "next/navigation";
 
-export default function RouterBack() {
+type Props = {
+  className?: string;
+};
+
+export default function RouterBack({ className }: Props) {
   const router = useRouter();
 
   return (
     <>
       <button
-        className="w-fit flex items-center gap-4"
+        className={`w-fit flex items-center gap-4 ${className}`}
         onClick={() => router.back()}
       >
         <svg

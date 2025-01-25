@@ -10,8 +10,8 @@ export default function Loading() {
   return (
     <>
       <Header />
-      <div className="p-6 grid gap-4 sm:justify-center pt-20">
-        <RouterBack />
+      <div className="p-6 grid gap-4 sm:justify-center">
+        <RouterBack className="mt-[5rem]" />
         <ResultBoxLoader style="sm:w-[33rem]" />
         <DescriptionLoader />
         <InfoBoxLoader />

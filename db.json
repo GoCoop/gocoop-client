@@ -2,31 +2,133 @@
     "coops": [
         {
             "id": 1,
-            "name": "Agrária",
+            "name": "agrária",
             "category": "industry",
             "desc": "Cooperativa responsável pela produção de malte.",
             "imageUrl": "/agraria-logo.jpg"
         },
         {
             "id": 2,
-            "name": "Coopfam",
+            "name": "coopfam",
             "category": "coffee",
             "desc": "Cooperativa de cafeicultores.",
             "imageUrl": "/coopfam-logo.jpeg"
         },
         {
             "id": 3,
-            "name": "Sicredi",
+            "name": "sicredi",
             "category": "banking",
             "desc": "Cooperativa de crédito.",
             "imageUrl": "/sicredi-logo.png"
         },
         {
             "id": 4,
-            "name": "Aurora Alimentos",
+            "name": "sicoob",
+            "category": "banking",
+            "desc": "Cooperativa de crédito.",
+            "imageUrl": "/sicoob-logo.jpg"
+        },
+        {
+            "id": 5,
+            "name": "aurora alimentos",
             "category": "food",
             "desc": "Cooperativa de comercialização de alimentos.",
             "imageUrl": "/aurora-alimentos-logo.jpg"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Alimentos",
+            "icon": "food"   
+        },
+        {
+            "id": 2,
+            "name": "Café",
+            "icon": "coffee"
+        },
+        {
+            "id": 3,
+            "name": "Cerveja",
+            "icon": "beer"
+        },
+        {
+            "id": 4,
+            "name": "Crédito",
+            "icon": "banking"
+        },
+        {
+            "id": 5,
+            "name": "Indústria",
+            "icon": "industry"
+        },
+        {
+            "id": 6,
+            "name": "Serviços",
+            "icon": "services"
+        },
+        {
+            "id": 7,
+            "name": "Tecnologia",
+            "icon": "tecnology"
+        }
+
+    ],
+    "details": [
+        {
+            "id": 1,
+            "name": "agrária",
+            "imageUrl": "/agraria-logo.jpg",
+            "category": "industry",
+            "shortDesc": "Cooperativa responsável pela produção de malte.",
+            "desc": "A Agrária é uma cooperativa agroindustrial localizada em Guarapuava (PR), com sede no distrito de Entre Rios. Estabelecida em 1951, alia tradição e história a tecnologia e gestão de excelência. A partir da agricultura, a Agrária instituiu cadeias produtivas completas, que compreendem desde pesquisa agrícola, realizada pela FAPA (Fundação Agrária de Pesquisa Agropecuária), até a industrialização.\n As principais culturas produzidas pelos cooperados são soja, milho, trigo e cevada. Às commodities agrega-se valor por meio das unidades de negócios Agrária Malte, Agrária Farinhas, Agrária Nutrição Animal, Agrária Sementes, Agrária Óleo e Farelo e Agrária Grits e Flakes.",
+            "location": "Três Rios, Santa Catarina - Brasil",
+            "websiteURL": "https://www.agraria.com.br",
+            "workers": 728
+        },
+        {
+            "id": 2,
+            "name": "coopfam",
+            "imageUrl": "/coopfam-logo.jpeg",
+            "category": "coffee",
+            "shortDesc": "Cooperativa de cafeicultores.",
+            "desc": "A Cooperativa dos Agricultores Familiares de Poço Fundo e Região (COOPFAM) é uma cooperativa constituída majoritariamente por agricultores familiares que trabalham no setor cafeeiro. A COOPFAM foi iniciou seus trabalhos na década de 1980 com apoio das Comunidades Eclesiais de Base (CEBs) e da Pastoral da Terra. \nNa década de 1990 foi fundada a Associação dos Pequenos Produtores, que posteriormente se tornou Cooperativa por conta de facilitar a comercialização do café. A COOPFAM foi a primeira organização do Brasil a entrar para o Sistema FairTrade por convite do próprio sistema de comércio justo.",
+            "location": "Poço Fundo, Minas Gerais - Brasil",
+            "websiteURL": "https://coopfam.com.br/",
+            "workers": 500
+        },
+        {
+            "id": 3,
+            "name": "sicredi",
+            "imageUrl": "/sicredi-logo.png",
+            "category": "banking",
+            "shortDesc": "Cooperativa de crédito.",
+            "desc": "Somos a primeira instituição financeira cooperativa do Brasil. E essa trajetória começou com um sonho: levar desenvolvimento para as regiões onde nos inserimos. \nO cooperativismo de crédito chegou ao Brasil com o padre suíço Theodor Amstad, que lançou as sementes de uma nova forma de organização econômica para resolver as questões financeiras da comunidade.",
+            "location": "Porto Alegre, Rio Grande do Sul - Brasil",
+            "websiteURL": "https://www.sicredi.com.br/",
+            "workers": 8500000
+        },
+        {
+            "id": 4,
+            "name": "sicoob",
+            "imageUrl": "/sicoob-logo.jpg",
+            "category": "banking",
+            "shortDesc": "Cooperativa de crédito.",
+            "desc": "Lorem ipsum",
+            "location": "Distrito Federal, Brasília - Brasil",
+            "websiteURL": "https://www.sicoob.com.br/",
+            "workers": 8000000
+        },
+        {
+            "id": 5,
+            "name": "aurora alimentos",
+            "imageUrl": "/aurora-alimentos-logo.jpg",
+            "category": "food",
+            "shortDesc": "Cooperativa de comercialização de alimentos.",
+            "desc": "Lorem ipsum",
+            "location": "Chapecó, Santa Catarina - Brasil",
+            "websiteURL": "https://www.auroraalimentos.com.br/",
+            "workers": 1000
         }
     ]
 }

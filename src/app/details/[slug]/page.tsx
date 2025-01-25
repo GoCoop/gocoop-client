@@ -50,7 +50,8 @@ export default async function DetailsPage({ params }: Props) {
       <Header />
 
       <main className="p-6 pb-8 grid gap-4 sm:justify-center">
-        <RouterBack />
+        {/* <div className="mt-16"></div> */}
+        <RouterBack className="mt-[5rem]" />
 
         {details && details.data && (
           <>

@@ -53,6 +53,7 @@ export default async function SearchPage({
         <InputField
           id="main-search"
           name="search"
+          className="mt-[5rem]"
           defaultValue={search ?? ""}
           autoFocus={true}
           placeholder="Busque por uma cooperativa..."

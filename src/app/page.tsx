@@ -33,7 +33,9 @@ export default async function Home() {
     <>
       <Header />
 
-      <main className="p-6 h-[calc(100vh-75px)] grid grid-rows-[max-content_max-content_max-content_1fr] gap-4 sm:h-auto sm:justify-center sm:pt-20">
+      <main className="p-6 h-screen grid grid-rows-[auto_max-content_max-content_max-content_1fr] gap-4 sm:h-auto sm:justify-center sm:pt-20 landscape:h-auto">
+        <div className="mt-16"></div>
+
         <LogoIcon width="50" height="50" className="place-self-center" />
 
         <h1 className="text-xl">

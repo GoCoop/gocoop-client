@@ -14,6 +14,7 @@ type Props = {
   id: string;
   name: string;
   placeholder?: string;
+  className?: string;
   redirectsTo: string;
   categoryParam?: string;
   defaultValue?: string;
@@ -27,6 +28,7 @@ export default function InputField({
   id,
   name,
   placeholder = "Digite o texto",
+  className,
   redirectsTo,
   categoryParam,
   defaultValue,
@@ -55,7 +57,7 @@ export default function InputField({
   }, [defaultValue]);
 
   return (
-    <div className="relative">
+    <div className={`relative ${className}`}>
       {Icon && (
         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
           {" "}

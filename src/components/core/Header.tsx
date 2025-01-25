@@ -12,8 +12,18 @@ export default function Header(): JSX.Element {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  //       position: fixed;
+  //     /* height: 100%; */
+  //     display: grid
+  // ;
+  //     grid-template-rows: max-content 1fr;
+  //     grid-template-columns: 1fr 1fr;
   return (
-    <header className="w-full p-6 flex items-center justify-between border-b">
+    <header
+      className={`w-full p-6 fixed grid grid-cols-2 grid-rows-[max-content_1fr] items-center justify-between border-b bg-white ${
+        isMenuOpen && "h-full"
+      } z-20`}
+    >
       <Link
         href={"/"}
         aria-label="Link para a página inicial Home usando logo do projeto."
@@ -30,7 +40,7 @@ export default function Header(): JSX.Element {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           color="#000000"
-          className="sm:hidden"
+          className="sm:hidden place-self-end"
           onClick={() => toggleMenuBar()}
         >
           <path
@@ -50,7 +60,7 @@ export default function Header(): JSX.Element {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           color="#000000"
-          className="sm:hidden"
+          className="sm:hidden place-self-end"
           onClick={() => toggleMenuBar()}
         >
           <path
@@ -77,7 +87,7 @@ export default function Header(): JSX.Element {
         </svg>
       )}
 
-      <nav className="hidden sm:block">
+      <nav className="hidden sm:block place-self-end">
         <ul className="flex gap-6">
           <Link href="/" aria-label="Link para a página inicial do site.">
             <li className="cursor-pointer">Home</li>
