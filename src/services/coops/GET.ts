@@ -10,7 +10,7 @@ type Coop = {
   name: string;
   category: string;
   desc: string;
-  imageUrl: string;
+  imageURL: string;
 };
 
 export default async function GET(req: Req): Promise<Res<Coop[]>> {

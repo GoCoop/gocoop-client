@@ -91,7 +91,7 @@ export default async function SearchPage({
           {coopsData && coopsData.data ? (
             coopsData.data.map((d) => (
               <Link href={`/details/${d.name}`} key={d.id}>
-                <ResultBox name={d.name} desc={d.desc} imageUrl={d.imageUrl} />
+                <ResultBox name={d.name} desc={d.desc} imageUrl={d.imageURL} />
               </Link>
             ))
           ) : (
