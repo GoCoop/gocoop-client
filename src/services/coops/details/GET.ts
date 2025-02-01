@@ -8,7 +8,7 @@ type Req = {
 export type CoopDetailsT = {
   id: number;
   name: string;
-  imageUrl: string;
+  imageURL: string;
   category: CategoriesT;
   shortDesc: string;
   desc: string;
@@ -17,9 +17,9 @@ export type CoopDetailsT = {
   workers: number;
 };
 
-export default async function GET(req: Req): Promise<Res<CoopDetailsT[]>> {
+export default async function GET(req: Req): Promise<Res<CoopDetailsT>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
-  const url = `${apiUrl}/details?name=${req.name}`;
+  const url = `${apiUrl}/coops/${req.name}`;
 
   try {
     const res = await fetch(url, {
