@@ -90,8 +90,12 @@ export default async function SearchPage({
         <div className="grid gap-5 sm:w-[33rem]">
           {coopsData && coopsData.data ? (
             coopsData.data.map((d) => (
-              <Link href={`/details/${d.name}`} key={d.id}>
-                <ResultBox name={d.name} desc={d.desc} imageUrl={d.imageURL} />
+              <Link href={`/details/${d.slug}`} key={d.id}>
+                <ResultBox
+                  name={d.name}
+                  desc={d.short_desc}
+                  imageUrl={d.image_url}
+                />
               </Link>
             ))
           ) : (

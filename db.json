@@ -36,44 +36,6 @@
             "imageUrl": "/aurora-alimentos-logo.jpg"
         }
     ],
-    "categories": [
-        {
-            "id": 1,
-            "name": "Alimentos",
-            "icon": "food"   
-        },
-        {
-            "id": 2,
-            "name": "Café",
-            "icon": "coffee"
-        },
-        {
-            "id": 3,
-            "name": "Cerveja",
-            "icon": "beer"
-        },
-        {
-            "id": 4,
-            "name": "Crédito",
-            "icon": "banking"
-        },
-        {
-            "id": 5,
-            "name": "Indústria",
-            "icon": "industry"
-        },
-        {
-            "id": 6,
-            "name": "Serviços",
-            "icon": "services"
-        },
-        {
-            "id": 7,
-            "name": "Tecnologia",
-            "icon": "tecnology"
-        }
-
-    ],
     "details": [
         {
             "id": 1,

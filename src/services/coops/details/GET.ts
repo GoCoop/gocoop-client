@@ -8,12 +8,12 @@ type Req = {
 export type CoopDetailsT = {
   id: number;
   name: string;
-  imageURL: string;
-  category: CategoriesT;
-  shortDesc: string;
-  desc: string;
-  location: string;
-  websiteURL: string;
+  image_url: string;
+  categories: CategoriesT[];
+  short_desc: string;
+  description: string;
+  country: string;
+  website_url: string;
   workers: number;
 };
 

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${res.data ? res.data.name : "N/I"} | GoCoop`,
-    description: res.data ? res.data.shortDesc : "N/I",
+    description: res.data ? res.data.short_desc : "N/I",
   };
 }
 
@@ -58,24 +58,27 @@ export default async function DetailsPage({ params }: Props) {
             <div className="grid grid-cols-[max-content_1fr] gap-x-4">
               <Image
                 className="row-start-1 row-end-3 rounded-full"
-                src={details.data.imageURL}
+                src={details.data.image_url}
                 alt="Logo da cooperativa"
                 width={70}
                 height={70}
               />
               <h1 className="text-lg self-center">{details.data.name}</h1>
-              <p className="text-sm">{details.data.shortDesc}</p>
+              <p className="text-sm">{details.data.short_desc}</p>
             </div>
 
-            <div>
-              <div className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
-                <Icon icon={details.data.category} />
-                <span>{translateCategory(details.data.category)}</span>
-              </div>
+            <div className="flex items-center gap-2">
+              {details.data.categories &&
+                details.data.categories.map((c) => (
+                  <div className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
+                    <Icon icon={c} />
+                    <span>{translateCategory(c)}</span>
+                  </div>
+                ))}
             </div>
 
             <section className="p-3 border-y border-x rounded-lg sm:w-[33rem]">
-              {details.data.desc}
+              {details.data.description}
               {/* {details.data[0].desc &&
                 details.data[0].desc.split("\n").map((line, i) => (
                   <>
@@ -108,7 +111,8 @@ export default async function DetailsPage({ params }: Props) {
                   strokeLinejoin="round"
                 ></path>
               </svg>
-              {details.data.location}
+              {details.data.country.charAt(0).toUpperCase() +
+                details.data.country.slice(1)}
             </div>
             <div className="p-3 border-y border-x rounded-lg flex items-center gap-2">
               <svg
@@ -135,13 +139,13 @@ export default async function DetailsPage({ params }: Props) {
                   strokeLinejoin="round"
                 ></path>
               </svg>
-              {details.data.websiteURL ? (
+              {details.data.website_url ? (
                 <Link
-                  href={details.data.websiteURL}
+                  href={details.data.website_url}
                   target="_blank"
                   className="text-sky-400 underline"
                 >
-                  {details.data.websiteURL}
+                  {details.data.website_url}
                 </Link>
               ) : (
                 <span>N/I</span>

@@ -12,12 +12,6 @@ export default function Header(): JSX.Element {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  //       position: fixed;
-  //     /* height: 100%; */
-  //     display: grid
-  // ;
-  //     grid-template-rows: max-content 1fr;
-  //     grid-template-columns: 1fr 1fr;
   return (
     <header
       className={`w-full p-6 fixed grid grid-cols-2 grid-rows-[max-content_1fr] items-center justify-between border-b bg-white ${
