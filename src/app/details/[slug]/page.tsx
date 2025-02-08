@@ -70,9 +70,9 @@ export default async function DetailsPage({ params }: Props) {
             <div className="flex items-center gap-2">
               {details.data.categories &&
                 details.data.categories.map((c) => (
-                  <div className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
-                    <Icon icon={c} />
-                    <span>{translateCategory(c)}</span>
+                  <div key={c.id} className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
+                    <Icon icon={c.name} />
+                    <span>{translateCategory(c.name)}</span>
                   </div>
                 ))}
             </div>

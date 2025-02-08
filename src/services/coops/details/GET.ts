@@ -5,11 +5,16 @@ type Req = {
   name: string;
 };
 
+type CategoriesData = {
+  id: number,
+  name: CategoriesT 
+}
+
 export type CoopDetailsT = {
   id: number;
   name: string;
   image_url: string;
-  categories: CategoriesT[];
+  categories: CategoriesData[];
   short_desc: string;
   description: string;
   country: string;
