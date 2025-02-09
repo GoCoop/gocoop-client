@@ -1,5 +1,6 @@
 "use client";
 
+import { getDictionary } from "@/dictionaries";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -33,7 +34,6 @@ export default function RouterBack({ className }: Props) {
             strokeLinejoin="round"
           ></path>
         </svg>
-        Voltar
       </button>
     </>
   );

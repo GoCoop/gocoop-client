@@ -6,11 +6,12 @@ import Header from "@/components/core/Header";
 import RouterBack from "@/components/core/RouterBack";
 
 import coops from "@/services/coops";
+import { getDictionary, type Locales } from "@/dictionaries";
 
 import Icon, { type CategoriesT } from "@/icons/Icon/Icon";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string, lang: Locales }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -28,7 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function DetailsPage({ params }: Props) {
-  const slug = (await params).slug;
+  const { slug, lang } = await params;
+  const t = await getDictionary(lang);
   const details = await coops.details.GET({ name: slug });
 
   const translateCategory = (category: CategoriesT): string => {
@@ -47,8 +49,6 @@ export default async function DetailsPage({ params }: Props) {
 
   return (
     <>
-      <Header />
-
       <main className="p-6 pb-8 grid gap-4 sm:justify-center">
         {/* <div className="mt-16"></div> */}
         <RouterBack className="mt-[5rem]" />
@@ -184,7 +184,7 @@ export default async function DetailsPage({ params }: Props) {
                   ></path>
                 </g>
               </svg>
-              {details.data.workers} cooperados
+              {details.data.workers} {t.details.workers} 
             </div>
           </>
         )}

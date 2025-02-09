@@ -3,17 +3,19 @@ import { type Metadata } from "next";
 
 import Category from "@/components/material/Category/Category";
 import CategoryFilter from "@/components/material/CategorySelected/CategorySelected";
-import Header from "../../components/core/Header";
-import ResultBox from "../../components/core/ResultBox";
+import Header from "../../../components/core/Header";
+import ResultBox from "../../../components/core/ResultBox";
 import ResultBoxLoader from "@/components/core/Skeletons/ResultBoxLoader";
-import InputField from "../../components/material/InputField/InputField";
+import InputField from "../../../components/material/InputField/InputField";
 import Modal from "@/components/material/Modal/Modal";
 
-import SearchIcon from "../../icons/SearchIcon";
+import SearchIcon from "../../../icons/SearchIcon";
 import { type CategoriesT } from "@/icons/Icon/Icon";
 
 import coops from "@/services/coops";
 import categories from "@/services/categories";
+import { Locale } from "../../../../i18-config";
+import { getDictionary } from "@/dictionaries";
 
 export async function generateMetadata({
   searchParams,
@@ -31,13 +33,19 @@ export async function generateMetadata({
 
 export default async function SearchPage({
   searchParams,
+  params
 }: {
   searchParams: {
     search: string | undefined;
     category: CategoriesT | undefined;
+  },
+  params: {
+    lang: Locale
   };
 }) {
   const { search, category } = await searchParams;
+  const { lang } = await params;
+  const t = await getDictionary(lang);
 
   const coopsData = await coops.GET({
     search: search ?? "",
@@ -48,7 +56,6 @@ export default async function SearchPage({
 
   return (
     <>
-      <Header />
       <main className="p-6 grid gap-8 sm:justify-center">
         <InputField
           id="main-search"
@@ -56,7 +63,7 @@ export default async function SearchPage({
           className="mt-[5rem]"
           defaultValue={search ?? ""}
           autoFocus={true}
-          placeholder="Busque por uma cooperativa..."
+          placeholder={t.search.inputPlaceholder}
           icon={SearchIcon}
           redirectsTo="/search"
           categoryParam={category ?? ""}
@@ -65,9 +72,9 @@ export default async function SearchPage({
         {category ? (
           <CategoryFilter search={search ?? ""} name={category} />
         ) : (
-          <Modal button={{ name: "Selecionar categoria", className: "w-fit" }}>
+          <Modal button={{ name: t.search.modalButton, className: "w-fit" }}>
             <div className="grid gap-6">
-              <h2 className="text-xl">Selecione uma categoria</h2>
+              <h2 className="text-xl">{t.search.modalTitle}</h2>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {categoriesData &&
                   categoriesData.data &&

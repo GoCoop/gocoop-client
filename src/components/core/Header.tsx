@@ -4,8 +4,13 @@ import { JSX, useState } from "react";
 import Link from "next/link";
 
 import LogoIcon from "@/icons/Logo";
+import { getDictionary } from "@/dictionaries";
 
-export default function Header(): JSX.Element {
+type Props = {
+  t: Awaited<ReturnType<typeof getDictionary>>["header"]
+}
+
+export default function Header({ t }: Props): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenuBar = () => {
@@ -87,7 +92,7 @@ export default function Header(): JSX.Element {
             <li className="cursor-pointer">Home</li>
           </Link>
           <Link href="/aboutUs" aria-label="Link para a página Sobre Nós.">
-            <li className="cursor-pointer">Sobre Nós</li>
+            <li className="cursor-pointer">{t.aboutUs}</li>
           </Link>
         </ul>
       </nav>
@@ -99,7 +104,7 @@ export default function Header(): JSX.Element {
               <li className="cursor-pointer">Home</li>
             </Link>
             <Link href="/aboutUs" aria-label="Link para a página Sobre Nós.">
-              <li className="cursor-pointer">Sobre Nós</li>
+              <li className="cursor-pointer">{t.aboutUs}</li>
             </Link>
           </ul>
         </nav>

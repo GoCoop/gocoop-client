@@ -1,6 +1,6 @@
 import Header from "@/components/core/Header";
 import { Metadata } from "next";
-import { getDictionary, type Locales } from "../dictionaries";
+import { getDictionary, type Locales } from "../../../dictionaries";
 
 export const metadata: Metadata = {
   title: "Sobre Nós | GoCoop",
@@ -15,7 +15,6 @@ export default async function AboutUsPage({ params }: { params: { lang: Locales 
 
   return (
     <>
-      <Header />
       <main className="p-6 grid gap-5 lg:justify-center">
         <div className="mt-[5rem] grid gap-5 md:place-self-start lg:w-[33rem]">
           <div className="grid gap-4">
@@ -31,7 +30,7 @@ export default async function AboutUsPage({ params }: { params: { lang: Locales 
         </div>
         <div className="p-6 h-60 bg-[#5DC04F] rounded-lg grid md:h-full">
           <span className="text-white font-bold text-2xl self-end">
-            Cooperando para um futuro melhor.
+            {t.aboutUs.phraseGreenBox} 
           </span>
         </div>
       </main>
