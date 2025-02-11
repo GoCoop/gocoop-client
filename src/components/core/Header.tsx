@@ -1,7 +1,8 @@
 "use client";
 
-import { JSX, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import LogoIcon from "@/icons/Logo";
 import { getDictionary } from "@/dictionaries";
@@ -11,11 +12,14 @@ type Props = {
 }
 
 export default function Header({ t }: Props): JSX.Element {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenuBar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => { setIsMenuOpen(false) }, [pathname]);
 
   return (
     <header
