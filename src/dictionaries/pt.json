@@ -14,8 +14,8 @@
   "search": {
     "modalButton": "Selecione uma categoria ",
     "modalTitle": "Seleciona uma categoria",
-    "filteringBy": "Filtering by",
-    "inputPlaceholder": "Search for a coop..."
+    "filteringBy": "Filtrando por:",
+    "inputPlaceholder": "Procure por uma cooperativa..."
   },
   "aboutUs": {
     "link": "Sobre Nós",

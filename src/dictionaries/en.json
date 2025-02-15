@@ -14,7 +14,7 @@
   "search": {
     "modalButton": "Select category",
     "modalTitle": "Select a category",
-    "filteringBy": "Filtering by",
+    "filteringBy": "Filtering by:",
     "inputPlaceholder": "Search for a coop..."
   },
   "aboutUs": {
