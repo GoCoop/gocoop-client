@@ -53,34 +53,22 @@ export default async function Home({ params }: { params: { lang: Locales }}) {
         />
 
         <div className="grid grid-cols-2 gap-4 place-content-end sm:place-content-start sm:grid-cols-3">
-          <Link
-            href={{
-              pathname: "/search",
-              query: { category: "food" },
-            }}
-          >
-            <Category name="Alimentos" icon="food" />
-          </Link>
-
-          <Link
-            href={{
-              pathname: "/search",
-              query: { category: "services" },
-            }}
-          >
-            <Category name="Serviços" icon="services" />
-          </Link>
-
-          <Link
-            href={{
-              pathname: "/search",
-              query: { category: "industry" },
-            }}
-            className="hidden sm:flex"
-          >
-            <Category name="Indústria" icon="industry" />
-          </Link>
-
+          {
+            categories &&
+              categories.slice(0, 3).map((cat, i) => (
+                <Link
+                  key={cat.id}
+                  href={{
+                    pathname: "/search",
+                    query: { category: cat.icon },
+                  }}
+                  className={i == 2 ? 'hidden sm:flex' : ''}
+                >
+                  <Category name={cat.name} icon={cat.icon} />
+                </Link>
+              ))
+          }
+          
           <Modal
             button={{
               name: t.home.btnSeeMore,
