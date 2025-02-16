@@ -7,19 +7,19 @@
   },
   "home": {
     "title": "Discover cooperatives from all around the globe.",
-    "inputPlaceholder": "Search for a coop...",
+    "inputPlaceholder": "Search for a cooperative...",
     "selectCategory": "Select a category",
     "btnSeeMore": "See more"
   },
   "search": {
-    "modalButton": "Select category",
+    "modalButton": "Select a category",
     "modalTitle": "Select a category",
     "filteringBy": "Filtering by:",
-    "inputPlaceholder": "Search for a coop..."
+    "inputPlaceholder": "Search for a cooperative..."
   },
   "aboutUs": {
     "link": "About Us",
-    "sectionOne": "Our website was created with the aim of highlighting the strength of the cooperative model. Here, you'll find cooperatives from all over the global, organized by it's respective sectors, displaying details about these sustainable organizations.",
+    "sectionOne": "Our website was created with the aim of highlighting the strength of the cooperative model. Here, you'll find cooperatives from all over the globe, organized by it's respective sectors, displaying details about these sustainable organizations.",
     "sectionTwoTitle": "What are cooperatives?",
     "sectionTwo": "In a world where collaboration makes a difference, the cooperatives emerge as an example of union and collective prosperity. Unlike traditional companies, cooperatives are organizations formed and run by people with a common goal, where each member has a voice and where all members share the benefits.",
     "phraseGreenBox": "Humanity towards others."
