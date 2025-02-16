@@ -2,7 +2,7 @@ import Link from "next/link";
 import { type Metadata } from "next";
 
 import Category from "@/components/material/Category/Category";
-import CategoryFilter from "@/components/material/CategorySelected/CategorySelected";
+import CategorySelected from "@/components/material/CategorySelected/CategorySelected";
 import Header from "../../../components/core/Header";
 import ResultBox from "../../../components/core/ResultBox";
 import ResultBoxLoader from "@/components/core/Skeletons/ResultBoxLoader";
@@ -10,7 +10,8 @@ import InputField from "../../../components/material/InputField/InputField";
 import Modal from "@/components/material/Modal/Modal";
 
 import SearchIcon from "../../../icons/SearchIcon";
-import { type CategoriesT } from "@/icons/Icon/Icon";
+import type { CategoriesT } from "@/icons/Icon/Icon";
+import type { CategoryT } from "@/services/categories/GET";
 
 import coops from "@/services/coops";
 import categories from "@/services/categories";
@@ -29,6 +30,13 @@ export async function generateMetadata({
     description:
       "Página para realizar busca de cooperativas com base no input e nas categorias.",
   };
+}
+
+function translateCategory(name: CategoriesT | undefined, data: CategoryT[] | null): CategoryT | undefined {
+  if (name && data) 
+    return data.find(d => d.icon === name)
+  
+  return undefined;
 }
 
 export default async function SearchPage({
@@ -53,6 +61,7 @@ export default async function SearchPage({
   });
 
   const categoriesData = await categories.GET();
+  const cat = translateCategory(category, categoriesData.data);
 
   return (
     <>
@@ -69,8 +78,15 @@ export default async function SearchPage({
           categoryParam={category ?? ""}
         />
 
-        {category ? (
-          <CategoryFilter search={search ?? ""} name={category} />
+        {cat ? (
+          <div className="flex items-center gap-2">
+            <span>{t.search.filteringBy}</span>
+            <CategorySelected 
+              search={search ?? ""} 
+              name={cat.name} 
+              icon={cat.icon}
+            />
+          </div>
         ) : (
           <Modal button={{ name: t.search.modalButton, className: "w-fit" }}>
             <div className="grid gap-6">
