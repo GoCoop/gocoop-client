@@ -8,7 +8,7 @@ import RouterBack from "@/components/core/RouterBack";
 import coops from "@/services/coops";
 import { getDictionary, type Locales } from "@/dictionaries";
 
-import Icon, { type CategoriesT } from "@/icons/Icon/Icon";
+import Icon from "@/icons/Icon/Icon";
 
 type Props = {
   params: Promise<{ slug: string, lang: Locales }>;
@@ -32,20 +32,6 @@ export default async function DetailsPage({ params }: Props) {
   const { slug, lang } = await params;
   const t = await getDictionary(lang);
   const details = await coops.details.GET({ name: slug });
-
-  const translateCategory = (category: CategoriesT): string => {
-    const categories = {
-      logo: "Logo",
-      industry: "Indústria",
-      banking: "Crédito",
-      coffee: "Café",
-      food: "Alimentos",
-      beer: "Cerveja",
-      services: "Serviços",
-    };
-
-    return categories[category] || "N/I";
-  };
 
   return (
     <>
@@ -71,8 +57,8 @@ export default async function DetailsPage({ params }: Props) {
               {details.data.categories &&
                 details.data.categories.map((c) => (
                   <div key={c.id} className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
-                    <Icon icon={c.name} />
-                    <span>{translateCategory(c.name)}</span>
+                    <Icon icon={c.icon} />
+                    <span>{c.name}</span>
                   </div>
                 ))}
             </div>

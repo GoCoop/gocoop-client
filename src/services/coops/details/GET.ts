@@ -8,7 +8,8 @@ type Req = {
 
 type CategoriesData = {
   id: number,
-  name: CategoriesT 
+  name: string,
+  icon: CategoriesT
 }
 
 export type CoopDetailsT = {
