@@ -1,19 +1,24 @@
+import { headers } from "next/headers";
+import type { CategoriesT } from "@/icons/Icon/Icon";
 import type { Res } from "../types/res";
 
 export type CategoryT = {
   id: number;
   name: string;
-  icon: string;
+  icon: CategoriesT;
 };
 
 export default async function GET(): Promise<Res<CategoryT[]>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
   const url = `${apiUrl}/categories`;
+  const headersList = await headers();
+  const acceptLanguage = headersList.get('Accept-Language');
 
   try {
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
+        "Accept-Language": acceptLanguage ?? "en",
       },
       method: "GET",
     });

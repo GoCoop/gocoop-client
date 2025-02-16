@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import type { Res } from "../types/res";
 
 type Req = {
@@ -19,11 +20,14 @@ export default async function GET(req: Req): Promise<Res<Coop[]>> {
   const url = `${apiUrl}/coops?query=${encodeURIComponent(
     req.search
   )}&category=${encodeURIComponent(req.category)}`;
+  const headersList = await headers();
+  const acceptLanguage = headersList.get('Accept-Language');
 
   try {
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
+        "Accept-Language": acceptLanguage ?? 'en',
       },
       method: "GET",
     });
