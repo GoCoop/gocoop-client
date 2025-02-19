@@ -23,7 +23,7 @@ export default function Header({ t }: Props): JSX.Element {
 
   return (
     <header
-      className={`w-full p-6 fixed grid grid-cols-2 grid-rows-[max-content_1fr] items-center justify-between border-b bg-white ${
+      className={`w-full p-6 fixed grid grid-cols-[max-content_1fr] grid-rows-[max-content_1fr] items-center justify-between border-b bg-white ${
         isMenuOpen && "h-full"
       } z-20`}
     >
