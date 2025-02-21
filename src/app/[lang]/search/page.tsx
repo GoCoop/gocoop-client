@@ -10,11 +10,13 @@ import InputField from "../../../components/material/InputField/InputField";
 import Modal from "@/components/material/Modal/Modal";
 
 import SearchIcon from "../../../icons/SearchIcon";
+import SadFaceIcon from "@/icons/SadFaceIcon";
 import type { CategoriesT } from "@/icons/Icon/Icon";
 import type { CategoryT } from "@/services/categories/GET";
 
 import coops from "@/services/coops";
 import categories from "@/services/categories";
+
 import { Locale } from "../../../../i18-config";
 import { getDictionary } from "@/dictionaries";
 
@@ -112,15 +114,22 @@ export default async function SearchPage({
 
         <div className="grid gap-5 sm:w-[33rem]">
           {coopsData && coopsData.data ? (
-            coopsData.data.map((d) => (
-              <Link href={`/details/${d.slug}`} key={d.id}>
-                <ResultBox
-                  name={d.name}
-                  desc={d.short_desc}
-                  imageUrl={d.image_url}
-                />
-              </Link>
-            ))
+            coopsData.data.length >= 1 ?
+              coopsData.data.map((d) => (
+                <Link href={`/details/${d.slug}`} key={d.id}>
+                  <ResultBox
+                    name={d.name}
+                    desc={d.short_desc}
+                    imageUrl={d.image_url}
+                  />
+                </Link>
+              )
+            ) : (
+              <div className="grid justify-items-center gap-4 text-center">
+                <SadFaceIcon />
+                {t.search.notFound}
+              </div>
+            )
           ) : (
             <>
               <ResultBoxLoader />

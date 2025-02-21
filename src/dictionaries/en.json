@@ -15,7 +15,8 @@
     "modalButton": "Select a category",
     "modalTitle": "Select a category",
     "filteringBy": "Filtering by:",
-    "inputPlaceholder": "Search for a cooperative..."
+    "inputPlaceholder": "Search for a cooperative...",
+    "notFound": "No results found."
   },
   "aboutUs": {
     "link": "About Us",
