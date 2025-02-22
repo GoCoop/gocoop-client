@@ -36,7 +36,6 @@ export default async function DetailsPage({ params }: Props) {
   return (
     <>
       <main className="p-6 pb-8 grid gap-4 sm:justify-center">
-        {/* <div className="mt-16"></div> */}
         <RouterBack className="mt-[5rem]" />
 
         {details && details.data && (
@@ -63,15 +62,8 @@ export default async function DetailsPage({ params }: Props) {
                 ))}
             </div>
 
-            <section className="p-3 border-y border-x rounded-lg sm:w-[33rem]">
-              {details.data.description}
-              {/* {details.data[0].desc &&
-                details.data[0].desc.split("\n").map((line, i) => (
-                  <>
-                    <p>{line}</p>
-                    {details.data[0].desc.split("\n").length - 1 > i && <br />}
-                  </>
-                ))} */}
+            <section className="p-3 border-y border-x rounded-lg sm:w-[33rem] whitespace-pre-line">
+              {details.data.description.replaceAll("\\n", "\n")}
             </section>
             <div className="p-3 border-y border-x rounded-lg flex items-center gap-2">
               <svg
