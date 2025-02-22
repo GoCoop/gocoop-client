@@ -19,7 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const res = await coops.details.GET({ name: slug });
 
   if (!res.success) {
-    throw new Error("Erro ao pegar os dados da cooperativa.");
+    const lang = (await params).lang;
+    const t = await getDictionary(lang);
+    throw new Error(t.error.detailsPage);
   }
 
   return {

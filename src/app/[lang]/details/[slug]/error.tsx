@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import ErrorIcon from "@/icons/ErrorIcon";
 
 export default function ErrorBoundary({ error }: { error: Error }) {
-  useEffect(() => {
-    console.error("Error loading coop data!");
-  }, [error]);
-
   return (
-    <div>
-      <h2>{error.name}</h2>
-      <p>{error.message}</p>
+    <div
+      className="h-screen flex flex-col justify-center items-center gap-2"
+    >
+      <ErrorIcon /> 
+      {/* <h2>{error.name}</h2> */}
+      <h2>{error.message}</h2>
     </div>
   );
 }

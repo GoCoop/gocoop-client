@@ -28,6 +28,7 @@
   --foreground: #171717;
 
   --main-color-theme: #5DC04F;
+  --error-color: #da2525;
 }
 
 /* @media (prefers-color-scheme: dark) {

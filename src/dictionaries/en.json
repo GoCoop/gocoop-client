@@ -27,5 +27,8 @@
   },
   "details": {
     "workers": "Members"
+  },
+  "error": {
+    "detailsPage": "Error fetching data for this cooperative."
   } 
 }

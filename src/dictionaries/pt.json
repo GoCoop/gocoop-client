@@ -27,5 +27,8 @@
   },
   "details": {
     "workers": "Cooperados"
+  },
+  "error": {
+    "detailsPage": "Erro ao retornar dados sobre essa cooperativa."
   }
 }
