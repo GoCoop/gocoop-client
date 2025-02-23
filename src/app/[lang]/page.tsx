@@ -43,6 +43,7 @@ export default async function Home({ params }: { params: { lang: Locales }}) {
         <h1 className="text-xl">
           {t.home.title}
         </h1>
+
         <InputField
           id="main-search"
           name="search"

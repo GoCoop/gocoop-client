@@ -68,6 +68,8 @@ export default function InputField({
         ref={inputRef}
         id={id}
         name={name}
+        autoCapitalize="none"
+        enterKeyHint="search"
         type="text"
         defaultValue={defaultValue}
         className={`w-full p-4 ${[
