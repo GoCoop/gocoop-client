@@ -40,7 +40,7 @@ export default async function Home({ params }: { params: { lang: Locales }}) {
 
         <LogoIcon width="50" height="50" className="place-self-center" />
 
-        <h1 className="text-xl">
+        <h1 className="text-xl sm:text-center">
           {t.home.title}
         </h1>
 
@@ -50,6 +50,7 @@ export default async function Home({ params }: { params: { lang: Locales }}) {
           placeholder={t.home.inputPlaceholder}
           autoFocus={true}
           icon={SearchIcon}
+          className="sm:w-[35rem]"
           redirectsTo="/search"
         />
 
