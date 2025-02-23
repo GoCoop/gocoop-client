@@ -30,5 +30,14 @@
   },
   "error": {
     "detailsPage": "Erro ao retornar dados sobre essa cooperativa."
-  }
+  },
+  "notFoundPage": {
+    "metadata": {
+      "title": "Página não encontrada",
+      "description": "Página dedicada ao erro 404 - página não encontrada."
+    },
+    "title": "Ops!",
+    "message": "Essa página não existe.",
+    "button": "Voltar para home"
+  } 
 }
