@@ -124,7 +124,7 @@ export default async function DetailsPage({ params }: Props) {
                 <Link
                   href={details.data.website_url}
                   target="_blank"
-                  className="text-sky-400 underline"
+                  className="underline text-[#0000EE]"
                 >
                   {details.data.website_url}
                 </Link>
