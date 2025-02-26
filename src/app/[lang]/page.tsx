@@ -1,7 +1,6 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 
-import Header from "../../components/core/Header";
 import InputField from "../../components/material/InputField/InputField";
 import Category from "../../components/material/Category/Category";
 import Modal from "../../components/material/Modal/Modal";

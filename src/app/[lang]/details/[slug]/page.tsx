@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import Header from "@/components/core/Header";
 import RouterBack from "@/components/core/RouterBack";
 
 import coops from "@/services/coops";
@@ -37,7 +36,7 @@ export default async function DetailsPage({ params }: Props) {
 
   return (
     <>
-      <main className="p-6 pb-8 grid gap-4 sm:justify-center">
+      <main className="p-6 pb-10 grid gap-4 sm:justify-center">
         <RouterBack className="mt-[5rem]" />
 
         {details && details.data && (

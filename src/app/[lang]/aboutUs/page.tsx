@@ -1,4 +1,3 @@
-import Header from "@/components/core/Header";
 import { Metadata } from "next";
 import { getDictionary, type Locales } from "../../../dictionaries";
 

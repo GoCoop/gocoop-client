@@ -3,7 +3,6 @@ import { type Metadata } from "next";
 
 import Category from "@/components/material/Category/Category";
 import CategorySelected from "@/components/material/CategorySelected/CategorySelected";
-import Header from "../../../components/core/Header";
 import ResultBox from "../../../components/core/ResultBox";
 import ResultBoxLoader from "@/components/core/Skeletons/ResultBoxLoader";
 import InputField from "../../../components/material/InputField/InputField";
