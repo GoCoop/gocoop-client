@@ -6,12 +6,19 @@
     "back": "Back"
   },
   "home": {
+    "metadata": {
+      "description": "Home page to search for cooperatives all over the world."
+    },
     "title": "Discover cooperatives from all around the globe.",
     "inputPlaceholder": "Search for a cooperative...",
     "selectCategory": "Select a category",
     "btnSeeMore": "See more"
   },
   "search": {
+    "metadata": {
+      "title": "search GoCoop",
+      "description": "Page to search for cooperatives all over the world based on user input and it's different categories."
+    },
     "modalButton": "Select a category",
     "modalTitle": "Select a category",
     "filteringBy": "Filtering by:",
@@ -19,6 +26,10 @@
     "notFound": "No results found."
   },
   "aboutUs": {
+    "metadata": {
+      "title": "About Us | GoCoop",
+      "description": "The page describes what the GoCoop website is all about and it's main goal to share info about cooperatives around the world."
+    },
     "link": "About Us",
     "sectionOne": "Our website was created with the aim of highlighting the strength of the cooperative model. Here, you'll find cooperatives from all over the globe, organized by it's respective sectors, displaying details about these sustainable organizations.",
     "sectionTwoTitle": "What are cooperatives?",

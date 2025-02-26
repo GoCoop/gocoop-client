@@ -1,5 +1,5 @@
-import { type Metadata } from "next";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import InputField from "../../components/material/InputField/InputField";
 import Category from "../../components/material/Category/Category";
@@ -12,10 +12,21 @@ import categories from "@/services/categories";
 import { type CategoryT } from "@/services/categories/GET";
 import { getDictionary, type Locales } from "@/dictionaries";
 
-export const metadata: Metadata = {
-  title: "Home | GoCoop",
-  description: "Página Home para pesquisa de cooperativas no Brasil.",
-};
+type Props = {
+  params: Promise<{ lang: Locales }>
+}
+
+export async function generateMetadata({ 
+  params 
+}: Props): Promise<Metadata> {
+  const lang = (await params).lang;
+  const t = await getDictionary(lang);
+
+  return {
+    title: "Home | GoCoop",
+    description: t.home.metadata.description,
+  }
+}
 
 const getCategories = async (): Promise<CategoryT[] | null> => {
   const res = await categories.GET();
@@ -26,7 +37,7 @@ const getCategories = async (): Promise<CategoryT[] | null> => {
   return null;
 };
 
-export default async function Home({ params }: { params: { lang: Locales }}) {
+export default async function Home({ params }: Props) {
   const { lang } = await params;
   const t = await getDictionary(lang);
 

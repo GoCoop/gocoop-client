@@ -1,11 +1,21 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getDictionary, type Locales } from "../../../dictionaries";
 
-export const metadata: Metadata = {
-  title: "Sobre Nós | GoCoop",
-  description:
-    "A página descreve o que é o site GoCoop e o seu objetivo em divulgar cooperativas do Brasil.",
-};
+type Props = {
+  params: Promise<{ lang: Locales }>
+}
+
+export async function generateMetadata({ 
+  params 
+}: Props): Promise<Metadata> {
+  const lang = (await params).lang;
+  const t = await getDictionary(lang);
+
+  return {
+    title: t.aboutUs.metadata.title,
+    description: t.aboutUs.metadata.description
+  }
+}
 
 export default async function AboutUsPage({ params }: { params: { lang: Locales }}) {
 

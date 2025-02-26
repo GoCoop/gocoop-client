@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 
 import Category from "@/components/material/Category/Category";
 import CategorySelected from "@/components/material/CategorySelected/CategorySelected";
@@ -16,20 +16,25 @@ import type { CategoryT } from "@/services/categories/GET";
 import coops from "@/services/coops";
 import categories from "@/services/categories";
 
-import { Locale } from "../../../../i18-config";
-import { getDictionary } from "@/dictionaries";
+import { getDictionary, type Locales } from "@/dictionaries";
+
+type Props = {
+  searchParams: { 
+    search: string | undefined, 
+    category: CategoriesT | undefined 
+  },
+  params: Promise<{ search: string, lang: Locales }>
+}
 
 export async function generateMetadata({
-  searchParams,
-}: {
-  searchParams: { search: string };
-}): Promise<Metadata> {
-  const { search } = await searchParams;
+  params,
+}: Props): Promise<Metadata> {
+  const { search, lang } = await params;
+  const t = await getDictionary(lang);
 
   return {
-    title: `${search ? search + " |" : ""} pesquisa GoCoop`,
-    description:
-      "Página para realizar busca de cooperativas com base no input e nas categorias.",
+    title: `${search ? search + " | " : ""}${t.search.metadata.title}`,
+    description: t.search.metadata.description,
   };
 }
 
@@ -43,15 +48,7 @@ function translateCategory(name: CategoriesT | undefined, data: CategoryT[] | nu
 export default async function SearchPage({
   searchParams,
   params
-}: {
-  searchParams: {
-    search: string | undefined;
-    category: CategoriesT | undefined;
-  },
-  params: {
-    lang: Locale
-  };
-}) {
+}: Props) {
   const { search, category } = await searchParams;
   const { lang } = await params;
   const t = await getDictionary(lang);
