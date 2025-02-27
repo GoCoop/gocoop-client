@@ -15,7 +15,12 @@ export default function NotFound({ t }: Props) {
         <button
           className="p-2 px-4 flex items-center gap-2 rounded-2xl bg-mainColorTheme text-white"
         >
-          <LeftArrowIcon /> 
+          <LeftArrowIcon 
+            width={20}
+            height={20}
+            strokeWidth={2.5}
+            strokeColor='#fff'
+          /> 
           {t?.button} 
         </button>
       </Link>

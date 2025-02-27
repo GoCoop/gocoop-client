@@ -1,6 +1,6 @@
 "use client";
 
-import { getDictionary } from "@/dictionaries";
+import LeftArrowIcon from "@/icons/LeftArrowIcon";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -16,25 +16,12 @@ export default function RouterBack({ className }: Props) {
         className={`w-fit flex items-center gap-4 ${className}`}
         onClick={() => router.back()}
       >
-        <svg
-          width="40px"
-          height="40px"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <LeftArrowIcon
           className="p-2 bg-slate-100 rounded-full hover:bg-slate-200"
-          color="#000000"
-        >
-          <path
-            d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5"
-            stroke="#000000"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
-      </button>
+          width={40}
+          height={40}
+        />
+      </button> 
     </>
   );
 }

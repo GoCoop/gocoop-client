@@ -4,8 +4,11 @@ import { JSX, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import LogoIcon from "@/icons/Logo";
 import { getDictionary } from "@/dictionaries";
+
+import LogoIcon from "@/icons/Logo";
+import HamburguerMenuIcon from "@/icons/HamburguerMenuIcon";
+import CloseIcon from "@/icons/CloseIcon";
 
 type Props = {
   t: Awaited<ReturnType<typeof getDictionary>>["header"]
@@ -35,59 +38,9 @@ export default function Header({ t }: Props): JSX.Element {
       </Link>
 
       {isMenuOpen ? (
-        <svg
-          width="25px"
-          height="25px"
-          strokeWidth="1.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          color="#000000"
-          className="sm:hidden place-self-end"
-          onClick={() => toggleMenuBar()}
-        >
-          <path
-            d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426"
-            stroke="#000000"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
+        <CloseIcon onClick={toggleMenuBar}/> 
       ) : (
-        <svg
-          width="25px"
-          height="25px"
-          strokeWidth="1.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          color="#000000"
-          className="sm:hidden place-self-end"
-          onClick={() => toggleMenuBar()}
-        >
-          <path
-            d="M3 5H21"
-            stroke="#000000"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-          <path
-            d="M3 12H21"
-            stroke="#000000"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-          <path
-            d="M3 19H21"
-            stroke="#000000"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
+        <HamburguerMenuIcon onClick={toggleMenuBar}/> 
       )}
 
       <nav className="hidden sm:block place-self-end">
