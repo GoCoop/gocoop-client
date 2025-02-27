@@ -71,10 +71,9 @@ export default async function DetailsPage({ params }: Props) {
             <section className="p-3 border-y border-x rounded-lg sm:w-[33rem] whitespace-pre-line">
               {details.data.description.replaceAll("\\n", "\n")}
             </section>
-            <div className="p-3 border-y border-x rounded-lg flex items-center gap-2">
+            <div className="p-3 border-y border-x rounded-lg flex items-center gap-2 capitalize">
               <LocationIcon />
-              {details.data.country.charAt(0).toUpperCase() +
-                details.data.country.slice(1)}
+              {details.data.country}
             </div>
             <div className="p-3 border-y border-x rounded-lg flex items-center gap-2">
               <LinkIcon />
