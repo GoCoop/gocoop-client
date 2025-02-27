@@ -37,6 +37,9 @@
     "phraseGreenBox": "Humanidade para todos."
   },
   "details": {
+    "image": {
+      "alt": "logo da cooperativa"
+    },
     "workers": "Cooperados"
   },
   "error": {

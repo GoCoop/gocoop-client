@@ -37,6 +37,9 @@
     "phraseGreenBox": "Humanity towards others."
   },
   "details": {
+    "image": {
+      "alt": "cooperative logo"
+    },
     "workers": "Members"
   },
   "error": {

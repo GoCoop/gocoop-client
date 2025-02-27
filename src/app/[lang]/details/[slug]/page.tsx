@@ -50,7 +50,7 @@ export default async function DetailsPage({ params }: Props) {
               <Image
                 className="row-start-1 row-end-3 rounded-full"
                 src={details.data.image_url}
-                alt="Logo da cooperativa"
+                alt={t.details.image.alt}
                 width={70}
                 height={70}
               />
