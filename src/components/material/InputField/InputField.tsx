@@ -87,8 +87,12 @@ export default function InputField({
         placeholder={placeholder}
         onKeyDown={(e) => e.key === "Enter" && handleSubmit(searchInput)}
         onChange={(e) => setSearchInput(e.target.value)}
-        {...(typeof navigator !== "undefined" && /CriOS/.test(navigator.userAgent) ? { "__gchrome_uniqueid": "1", suppressHydrationWarning: true } : {})}
-      />
+        {...(typeof navigator !== "undefined" && 
+          /CriOS/.test(navigator.userAgent) ? 
+            { "__gchrome_uniqueid": "1", suppressHydrationWarning: true } // Subject to future tests. iOS chrome sends an unique attribute (at least the only browser detected that does this up until this moment).
+          : 
+            {})
+        }       />
     </div>
   );
 }
