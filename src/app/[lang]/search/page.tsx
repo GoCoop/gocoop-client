@@ -27,9 +27,11 @@ type Props = {
 }
 
 export async function generateMetadata({
+  searchParams,
   params,
 }: Props): Promise<Metadata> {
-  const { search, lang } = await params;
+  const { lang } = await params;
+  const { search } = await searchParams;
   const t = await getDictionary(lang);
 
   return {
