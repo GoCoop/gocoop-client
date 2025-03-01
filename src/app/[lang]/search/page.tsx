@@ -69,7 +69,6 @@ export default async function SearchPage({
           name="search"
           className="mt-[5rem]"
           defaultValue={search ?? ""}
-          autoFocus={false}
           placeholder={t.search.inputPlaceholder}
           icon={SearchIcon}
           redirectsTo="/search"

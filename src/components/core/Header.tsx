@@ -55,7 +55,7 @@ export default function Header({ t }: Props): JSX.Element {
       </nav>
 
       {isMenuOpen && (
-        <nav className="sm:hidden absolute z-10 bg-white h-[calc(100vh-75px)] w-screen right-0 bottom-0 left-0 flex justify-center items-center">
+        <nav className="sm:hidden absolute z-10 bg-white h-[calc(100dvh-75px)] w-screen right-0 bottom-0 left-0 flex justify-center items-center">
           <ul className="flex flex-col items-center gap-6">
             <Link href="/" aria-label="Link para a página inicial do site.">
               <li className="cursor-pointer">Home</li>

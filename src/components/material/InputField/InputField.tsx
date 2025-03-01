@@ -56,6 +56,15 @@ export default function InputField({
     }
   }, [defaultValue]);
 
+  useEffect(() => {
+    if (autoFocus) {
+      if (window.innerWidth > 768 && inputRef.current) {
+        const input = inputRef.current;
+        input.focus();
+      }
+    }
+  }, [autoFocus]);
+
   return (
     <div className={`relative ${className}`}>
       {Icon && (
@@ -75,10 +84,10 @@ export default function InputField({
         className={`w-full p-4 ${[
           Icon ? "pl-10" : "p-4",
         ]} border-x border-y rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#5DC04F]`}
-        autoFocus={autoFocus}
         placeholder={placeholder}
         onKeyDown={(e) => e.key === "Enter" && handleSubmit(searchInput)}
         onChange={(e) => setSearchInput(e.target.value)}
+        {...(typeof navigator !== "undefined" && /CriOS/.test(navigator.userAgent) ? { "__gchrome_uniqueid": "1", suppressHydrationWarning: true } : {})}
       />
     </div>
   );

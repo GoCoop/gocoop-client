@@ -8,7 +8,7 @@ type Props = {
  
 export default function NotFound({ t }: Props) {
   return (
-    <div className="h-screen grid place-content-center gap-3">
+    <div className="h-dvh grid place-content-center gap-3">
       <h2 className="text-4xl">{t?.title}</h2>
       <p>{t?.message}</p>
       <Link href="/">
