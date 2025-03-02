@@ -46,6 +46,10 @@ export default function InputField({
       url += `&category=${categoryParam}`;
     }
 
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+      if (inputRef.current) inputRef.current.blur();
+    };
+
     router.push(url);
   };
 
@@ -58,7 +62,7 @@ export default function InputField({
 
   useEffect(() => {
     if (autoFocus) {
-      if (window.innerWidth > 768 && inputRef.current) {
+      if (!("ontouchstart" in window || navigator.maxTouchPoints > 0) && inputRef.current) {
         const input = inputRef.current;
         input.focus();
       }
