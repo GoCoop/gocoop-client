@@ -55,6 +55,7 @@ export default async function data({ data, t }: Props) {
               href={data.website_url}
               target="_blank"
               className="underline text-[#0000EE]"
+              rel="noopener"
             >
               {data.website_url}
             </Link>
