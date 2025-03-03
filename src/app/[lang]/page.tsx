@@ -72,11 +72,15 @@ export default async function Home({ params }: Props) {
                   key={cat.id}
                   href={{
                     pathname: "/search",
-                    query: { category: cat.icon },
+                    query: { category: cat.label },
                   }}
                   className={i == 2 ? 'hidden sm:flex' : ''}
                 >
-                  <Category name={cat.name} icon={cat.icon} />
+                  <Category 
+                    name={cat.name} 
+                    icon={cat.icon} 
+                    altImage={t.categories.alt}
+                  />
                 </Link>
               ))
           }
@@ -96,10 +100,14 @@ export default async function Home({ params }: Props) {
                       key={cat.id}
                       href={{
                         pathname: "/search",
-                        query: { category: cat.icon },
+                        query: { category: cat.label },
                       }}
                     >
-                      <Category name={cat.name} icon={cat.icon} />
+                      <Category 
+                        name={cat.name} 
+                        icon={cat.icon} 
+                        altImage={t.categories.alt}
+                      />
                     </Link>
                   ))}
               </div>

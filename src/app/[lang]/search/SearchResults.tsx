@@ -10,7 +10,7 @@ import { getDictionary } from "@/dictionaries";
 type Props = {
   search: string;
   category: string;
-  t: Awaited<ReturnType<typeof getDictionary>>["search"];
+  t: Awaited<ReturnType<typeof getDictionary>>;
 }
 
 export default async function SearchResults({ search, category, t }: Props) {
@@ -32,13 +32,14 @@ export default async function SearchResults({ search, category, t }: Props) {
                     name={d.name}
                     desc={d.short_desc}
                     imageUrl={d.image_url}
+                    imageAlt={t.search.searchResults.imageAlt}
                   />
                 </Link>
               )
             ) : (
               <div className="grid justify-items-center gap-4 text-center">
                 <SadFaceIcon />
-                {t.notFound}
+                {t.search.notFound}
               </div>
             )
           )

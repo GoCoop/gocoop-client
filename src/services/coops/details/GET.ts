@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import type { CategoriesT } from "@/icons/Icon/Icon";
+import type { CategoriesT } from "@/services/categories/GET";
 import type { Res } from "@/services/types/res";
 
 type Req = {
@@ -7,9 +7,10 @@ type Req = {
 };
 
 type CategoriesData = {
-  id: number,
-  name: string,
-  icon: CategoriesT
+  id: number;
+  name: string;
+  label: CategoriesT;
+  icon: string;
 }
 
 export type CoopDetailsT = {

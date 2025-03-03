@@ -46,7 +46,7 @@ async function DetailsWrapper({
         description={res.data ? res.data.short_desc : "N/I"}
       />
 
-      <Details data={res.data!} t={t.details} />
+      <Details data={res.data!} t={t} />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Icon from "@/icons/Icon/Icon";
 import LocationIcon from "@/icons/LocationIcon";
 import LinkIcon from "@/icons/LinkIcon";
 import ArmIcon from "@/icons/ArmIcon";
@@ -12,10 +11,10 @@ import { getDictionary } from "@/dictionaries";
 
 type Props = {
   data: CoopDetailsT;
-  t: Awaited<ReturnType<typeof getDictionary>>["details"];
+  t: Awaited<ReturnType<typeof getDictionary>>;
 }
 
-export default async function data({ data, t }: Props) {
+export default async function Details({ data, t }: Props) {
   return (
     data && 
       <>
@@ -23,7 +22,7 @@ export default async function data({ data, t }: Props) {
           <Image
             className="row-start-1 row-end-3 rounded-full"
             src={data.image_url}
-            alt={t.image.alt}
+            alt={t.details.image.alt}
             width={70}
             height={70}
           />
@@ -35,7 +34,12 @@ export default async function data({ data, t }: Props) {
           {data.categories &&
             data.categories.map((c) => (
               <div key={c.id} className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
-                <Icon icon={c.icon} />
+                <Image 
+                  width={24}
+                  height={24}
+                  src={c.icon}
+                  alt={t.categories.alt}
+                />
                 <span>{c.name}</span>
               </div>
             ))}
@@ -65,7 +69,7 @@ export default async function data({ data, t }: Props) {
         </div>
         <div className="p-3 border-y border-x rounded-lg flex items-center gap-2">
           <ArmIcon /> 
-          {data.workers} {t.workers} 
+          {data.workers} {t.details.workers} 
         </div>
       </>
   )

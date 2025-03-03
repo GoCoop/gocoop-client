@@ -1,11 +1,18 @@
 import { headers } from "next/headers";
-import type { CategoriesT } from "@/icons/Icon/Icon";
 import type { Res } from "../types/res";
+
+export type CategoriesT = 
+"logo" 
+| "industry" 
+| "coffee" 
+| "beer" 
+| "music";
 
 export type CategoryT = {
   id: number;
   name: string;
-  icon: CategoriesT;
+  label: CategoriesT;
+  icon: string;
 };
 
 export default async function GET(): Promise<Res<CategoryT[]>> {

@@ -1,18 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import Icon, { CategoriesT } from "@/icons/Icon/Icon";
+import Image from "next/image";
 
 type Props = {
   search: string;
   name: string;
-  icon: CategoriesT;
+  icon: string;
+  altImage: string;
 };
 
-export default function CategorySelected({ search, name, icon }: Props) {
+export default function CategorySelected({ search, name, icon, altImage }: Props) {
   return (
     <div className="pl-2 flex items-center gap-2 border-x border-y rounded-lg">
-      <Icon icon={icon} />
+      <Image 
+        width={24}
+        height={24}
+        src={icon}
+        alt={altImage}
+      />
       <span>{name}</span>
       <Link
         href={`?search=${search}`}

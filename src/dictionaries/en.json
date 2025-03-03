@@ -20,6 +20,9 @@
       "title": "search GoCoop",
       "description": "Page to search for cooperatives all over the world based on user input and it's different categories."
     },
+    "searchResults": {
+      "imageAlt": "Cooperative logo"
+    },
     "modalButton": "Select a category",
     "modalTitle": "Select a category",
     "filteringBy": "Filtering by:",
@@ -61,5 +64,8 @@
     "title": "Ops!",
     "message": "This page does not exist.",
     "button": "Go home"
+  },
+  "categories": {
+    "alt": "category logo"
   }
 }

@@ -20,6 +20,9 @@
       "title": "pesquisa GoCoop",
       "description": "Página para realizar busca de cooperativas ao redor do mundo com base no input e nas suas diferentes categorias."
     },
+    "searchResults": {
+      "imageAlt": "Logo da cooperativa"
+    },
     "modalButton": "Selecione uma categoria ",
     "modalTitle": "Seleciona uma categoria",
     "filteringBy": "Filtrando por:",
@@ -61,5 +64,8 @@
     "title": "Ops!",
     "message": "Essa página não existe.",
     "button": "Voltar para home"
+  },
+  "categories": {
+    "alt": "logo da categoria"
   }
 }

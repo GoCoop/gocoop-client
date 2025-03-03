@@ -4,6 +4,7 @@ type Props = {
   name: string;
   desc: string;
   imageUrl: string;
+  imageAlt: string;
 };
 
 export default function ResultBox(props: Props) {
@@ -12,7 +13,7 @@ export default function ResultBox(props: Props) {
       <Image
         className="row-start-1 row-end-3 rounded-full"
         src={props.imageUrl}
-        alt="Logo da cooperativa"
+        alt={props.imageAlt}
         width={50}
         height={50}
       />

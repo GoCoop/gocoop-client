@@ -11,8 +11,7 @@ import InputField from "../../../components/material/InputField/InputField";
 import Modal from "@/components/material/Modal/Modal";
 
 import SearchIcon from "../../../icons/SearchIcon";
-import type { CategoriesT } from "@/icons/Icon/Icon";
-import type { CategoryT } from "@/services/categories/GET";
+import type { CategoryT, CategoriesT } from "@/services/categories/GET";
 
 import categories from "@/services/categories";
 
@@ -42,7 +41,7 @@ export async function generateMetadata({
 
 function translateCategory(name: CategoriesT | undefined, data: CategoryT[] | null): CategoryT | undefined {
   if (name && data) 
-    return data.find(d => d.icon === name)
+    return data.find(d => d.label === name)
   
   return undefined;
 }
@@ -83,6 +82,7 @@ export default async function SearchPage({
               search={search ?? ""} 
               name={cat.name} 
               icon={cat.icon}
+              altImage={t.categories.alt}
             />
           </div>
         ) : (
@@ -97,10 +97,14 @@ export default async function SearchPage({
                       key={cat.id}
                       href={{
                         pathname: "/search",
-                        query: { search: search, category: cat.icon },
+                        query: { search: search, category: cat.label },
                       }}
                     >
-                      <Category name={cat.name} icon={cat.icon} />
+                      <Category 
+                        name={cat.name} 
+                        icon={cat.icon} 
+                        altImage={t.categories.alt}
+                      />
                     </Link>
                   ))}
               </div>
@@ -112,7 +116,7 @@ export default async function SearchPage({
           <SearchResults 
             search={search ?? ''} 
             category={category ?? ''} 
-            t={t.search}
+            t={t}
           />     
         </Suspense> 
       </main>
