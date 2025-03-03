@@ -1,19 +1,19 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import SearchResults from "./SearchResults";
+import SearchResultsLoader from "@/components/core/Skeletons/SearchResults/SearchResultsLoader";
+
 import Category from "@/components/material/Category/Category";
 import CategorySelected from "@/components/material/CategorySelected/CategorySelected";
-import ResultBox from "../../../components/core/ResultBox";
-import ResultBoxLoader from "@/components/core/Skeletons/ResultBoxLoader";
 import InputField from "../../../components/material/InputField/InputField";
 import Modal from "@/components/material/Modal/Modal";
 
 import SearchIcon from "../../../icons/SearchIcon";
-import SadFaceIcon from "@/icons/SadFaceIcon";
 import type { CategoriesT } from "@/icons/Icon/Icon";
 import type { CategoryT } from "@/services/categories/GET";
 
-import coops from "@/services/coops";
 import categories from "@/services/categories";
 
 import { getDictionary, type Locales } from "@/dictionaries";
@@ -54,11 +54,6 @@ export default async function SearchPage({
   const { search, category } = await searchParams;
   const { lang } = await params;
   const t = await getDictionary(lang);
-
-  const coopsData = await coops.GET({
-    search: search ?? "",
-    category: category ?? "",
-  });
 
   const categoriesData = await categories.GET();
   const cat = translateCategory(category, categoriesData.data);
@@ -109,32 +104,13 @@ export default async function SearchPage({
           </Modal>
         )}
 
-        <div className="grid gap-5 sm:w-[33rem]">
-          {coopsData && coopsData.data ? (
-            coopsData.data.length >= 1 ?
-              coopsData.data.map((d) => (
-                <Link href={`/details/${d.slug}`} key={d.id}>
-                  <ResultBox
-                    name={d.name}
-                    desc={d.short_desc}
-                    imageUrl={d.image_url}
-                  />
-                </Link>
-              )
-            ) : (
-              <div className="grid justify-items-center gap-4 text-center">
-                <SadFaceIcon />
-                {t.search.notFound}
-              </div>
-            )
-          ) : (
-            <>
-              <ResultBoxLoader />
-              <ResultBoxLoader />
-              <ResultBoxLoader />
-            </>
-          )}
-        </div>
+        <Suspense key={`${search}-${category}`} fallback={<SearchResultsLoader />}>
+          <SearchResults 
+            search={search ?? ''} 
+            category={category ?? ''} 
+            t={t}
+          />     
+        </Suspense> 
       </main>
     </>
   );
