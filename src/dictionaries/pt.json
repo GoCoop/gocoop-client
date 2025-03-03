@@ -37,6 +37,10 @@
     "phraseGreenBox": "Humanidade para todos."
   },
   "details": {
+    "metadata": {
+      "initialDesc": "Descubra mais detalhes sobre essa cooperativa."
+    },
+    "routerBack": { "ariaLabel": "Botão para retornar para última página." },
     "image": {
       "alt": "logo da cooperativa"
     },
@@ -53,5 +57,5 @@
     "title": "Ops!",
     "message": "Essa página não existe.",
     "button": "Voltar para home"
-  } 
+  }
 }

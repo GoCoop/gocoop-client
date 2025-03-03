@@ -37,6 +37,10 @@
     "phraseGreenBox": "Humanity towards others."
   },
   "details": {
+    "metadata": {
+      "initialDesc": "Discover more details about this cooperative."
+    },
+    "routerBack": { "ariaLabel": "Go back to last page button." },
     "image": {
       "alt": "cooperative logo"
     },
@@ -53,5 +57,5 @@
     "title": "Ops!",
     "message": "This page does not exist.",
     "button": "Go home"
-  } 
+  }
 }
