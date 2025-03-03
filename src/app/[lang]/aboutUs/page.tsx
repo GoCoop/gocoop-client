@@ -37,7 +37,7 @@ export default async function AboutUsPage({ params }: { params: { lang: Locales 
             <p>{t.aboutUs.sectionTwo}</p>
           </div>
         </div>
-        <div className="p-6 h-60 bg-[#5DC04F] rounded-lg grid md:h-full">
+        <div className="p-6 h-60 bg-mainColorTheme rounded-lg grid md:h-full">
           <span className="text-white font-bold text-2xl self-end">
             {t.aboutUs.phraseGreenBox} 
           </span>
