@@ -15,6 +15,7 @@
     "btnSeeMore": "Ver mais"
   },
   "search": {
+    "error": "Pedimos desculpas! Houve um erro com a página de buscas.",
     "metadata": {
       "title": "pesquisa GoCoop",
       "description": "Página para realizar busca de cooperativas ao redor do mundo com base no input e nas suas diferentes categorias."
@@ -47,7 +48,10 @@
     "workers": "Cooperados"
   },
   "error": {
-    "detailsPage": "Erro ao retornar dados sobre essa cooperativa."
+    "detailsPage": "Erro ao retornar dados sobre essa cooperativa.",
+    "requests": {
+      "categories": "Houve um erro ao carregar as categorias. Pedimos desculpas pela inconveniência."
+    }
   },
   "notFoundPage": {
     "metadata": {

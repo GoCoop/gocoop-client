@@ -56,6 +56,10 @@ export default async function SearchPage({
   const t = await getDictionary(lang);
 
   const categoriesData = await categories.GET();
+  if (!categoriesData.success) {
+    throw new Error(t.error.requests.categories);
+  };
+
   const cat = translateCategory(category, categoriesData.data);
 
   return (
@@ -108,7 +112,7 @@ export default async function SearchPage({
           <SearchResults 
             search={search ?? ''} 
             category={category ?? ''} 
-            t={t}
+            t={t.search}
           />     
         </Suspense> 
       </main>

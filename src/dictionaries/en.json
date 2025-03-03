@@ -15,6 +15,7 @@
     "btnSeeMore": "See more"
   },
   "search": {
+    "error": "We're sorry! But an error occurred with the search page.",
     "metadata": {
       "title": "search GoCoop",
       "description": "Page to search for cooperatives all over the world based on user input and it's different categories."
@@ -47,7 +48,10 @@
     "workers": "Members"
   },
   "error": {
-    "detailsPage": "Error fetching data for this cooperative."
+    "detailsPage": "Error fetching data for this cooperative.",
+    "requests": {
+      "categories": "There was an error when fetching categories. Sorry about the inconvenience."
+    }
   },
   "notFoundPage": {
     "metadata": {

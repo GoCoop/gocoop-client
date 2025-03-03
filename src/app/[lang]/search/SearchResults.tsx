@@ -5,11 +5,12 @@ import ResultBox from "../../../components/core/ResultBox";
 import SadFaceIcon from "@/icons/SadFaceIcon";
 
 import coops from "@/services/coops";
+import { getDictionary } from "@/dictionaries";
 
 type Props = {
   search: string;
   category: string;
-  t: any;
+  t: Awaited<ReturnType<typeof getDictionary>>["search"];
 }
 
 export default async function SearchResults({ search, category, t }: Props) {
@@ -37,7 +38,7 @@ export default async function SearchResults({ search, category, t }: Props) {
             ) : (
               <div className="grid justify-items-center gap-4 text-center">
                 <SadFaceIcon />
-                {t.search.notFound}
+                {t.notFound}
               </div>
             )
           )
