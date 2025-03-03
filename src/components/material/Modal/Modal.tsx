@@ -4,7 +4,7 @@ import { JSX, ReactNode, useState } from "react";
 
 type Props = {
   children: ReactNode;
-  button?: {
+  button: {
     name: string;
     className: string;
   };
@@ -12,7 +12,7 @@ type Props = {
 
 export default function Modal({
   children,
-  button = { name: "Ver Mais", className: "" },
+  button,
 }: Props): JSX.Element | null {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,7 +30,7 @@ export default function Modal({
         className={`${button.className} p-2 border-x border-y rounded-2xl hover:bg-slate-100`}
         onClick={openModal}
       >
-        {button.name ?? "Ver mais"}
+        {button.name}
       </button>
     );
   }
