@@ -1,6 +1,6 @@
-import ResultBoxLoader from "@/components/core/Skeletons/ResultBoxLoader";
+import ResultBoxLoader from "@/components/core/Skeletons/SearchPage/ResultBoxLoader";
 
-export default function SearchResultsLoader() {
+export default function Loader() {
   return (
     <>
       <div className="grid gap-4 sm:justify-center">

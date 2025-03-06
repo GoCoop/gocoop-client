@@ -10,6 +10,7 @@ import LogoIcon from "@/icons/Logo";
 
 import categories from "@/services/categories";
 import { type CategoryT } from "@/services/categories/GET";
+
 import { getDictionary, type Locales } from "@/dictionaries";
 
 type Props = {

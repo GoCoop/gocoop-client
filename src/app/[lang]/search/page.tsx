@@ -2,17 +2,17 @@ import { Suspense } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import SearchResults from "./SearchResults";
-import SearchResultsLoader from "@/components/core/Skeletons/SearchResults/SearchResultsLoader";
-
 import Category from "@/components/material/Category/Category";
 import CategorySelected from "@/components/material/CategorySelected/CategorySelected";
 import InputField from "../../../components/material/InputField/InputField";
 import Modal from "@/components/material/Modal/Modal";
 
-import SearchIcon from "../../../icons/SearchIcon";
-import type { CategoryT, CategoriesT } from "@/services/categories/GET";
+import SearchResults from "./suspense/SearchResults";
+import Loader from "./suspense/Loader";
 
+import SearchIcon from "../../../icons/SearchIcon";
+
+import type { CategoryT, CategoriesT } from "@/services/categories/GET";
 import categories from "@/services/categories";
 
 import { getDictionary, type Locales } from "@/dictionaries";
@@ -112,7 +112,7 @@ export default async function SearchPage({
           </Modal>
         )}
 
-        <Suspense key={`${search}-${category}`} fallback={<SearchResultsLoader />}>
+        <Suspense key={`${search}-${category}`} fallback={<Loader />}>
           <SearchResults 
             search={search ?? ''} 
             category={category ?? ''} 

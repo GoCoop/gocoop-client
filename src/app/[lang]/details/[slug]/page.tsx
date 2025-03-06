@@ -6,8 +6,9 @@ import RouterBack from "@/components/core/RouterBack";
 import coops from "@/services/coops";
 import { getDictionary, type Locales } from "@/dictionaries";
 
-import Details from "./Details";
-import DetailsPageLoader from "@/components/core/Skeletons/DetailsPage/DetailsPageLoader";
+import Details from "./suspense/Details";
+import Loader from "./suspense/Loader";
+
 import MetadataUpdater from "@/utils/MetadataUpdater";
 
 type Props = {
@@ -63,8 +64,8 @@ export default async function DetailsPage({ params }: Props) {
           ariaLabel={t.details.routerBack.ariaLabel} 
         />
 
-        <Suspense fallback={<DetailsPageLoader />}>
-          <DetailsWrapper slug={slug} t={t}/>
+        <Suspense fallback={<Loader />}>
+          <DetailsWrapper slug={slug} t={t} />
         </Suspense>
       </main>
     </>

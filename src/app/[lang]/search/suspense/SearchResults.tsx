@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import ResultBox from "../../../components/core/ResultBox";
+import ResultBox from "@/components/core/ResultBox";
 
 import SadFaceIcon from "@/icons/SadFaceIcon";
 
@@ -10,7 +10,7 @@ import { getDictionary } from "@/dictionaries";
 type Props = {
   search: string;
   category: string;
-  t: Awaited<ReturnType<typeof getDictionary>>;
+  t: Pick<Awaited<ReturnType<typeof getDictionary>>, "search">;
 }
 
 export default async function SearchResults({ search, category, t }: Props) {

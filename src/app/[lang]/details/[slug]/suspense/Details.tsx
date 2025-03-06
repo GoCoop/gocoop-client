@@ -11,7 +11,7 @@ import { getDictionary } from "@/dictionaries";
 
 type Props = {
   data: CoopDetailsT;
-  t: Awaited<ReturnType<typeof getDictionary>>;
+  t: Pick<Awaited<ReturnType<typeof getDictionary>>, "details" | "categories">;
 }
 
 export default async function Details({ data, t }: Props) {
