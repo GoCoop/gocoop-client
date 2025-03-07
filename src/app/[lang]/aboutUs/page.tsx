@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { getDictionary, type Locales } from "../../../dictionaries";
+import GithubIcon from "@/icons/GithubIcon";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{ lang: Locales }>
@@ -35,6 +37,25 @@ export default async function AboutUsPage({ params }: { params: { lang: Locales 
           <div className="grid gap-4">
             <h2 className="text-lg font-medium">{t.aboutUs.sectionTwoTitle}</h2>
             <p>{t.aboutUs.sectionTwo}</p>
+          </div>
+          <div className="grid gap-4">
+            <h3>
+              <b>{t.aboutUs.linksTitle}</b>
+            </h3>
+            <nav>
+              <ul>
+                <li className="w-fit">
+                  <Link
+                    href={"https://github.com/GoCoop"}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={t.aboutUs.aria.githubLink}
+                  >
+                    <GithubIcon />
+                  </Link>  
+                </li>  
+              </ul> 
+            </nav>
           </div>
         </div>
         <div className="p-6 h-60 bg-mainColorTheme rounded-lg grid md:h-full">

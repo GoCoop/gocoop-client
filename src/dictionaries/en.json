@@ -35,10 +35,14 @@
       "description": "The page describes what the GoCoop website is all about and it's main goal to share info about cooperatives around the world."
     },
     "link": "About Us",
-    "sectionOne": "Our website was created with the aim of highlighting the strength of the cooperative model. Here, you'll find cooperatives from all over the globe, organized by it's respective sectors, displaying details about these sustainable organizations.",
+    "sectionOne": "Born in Brazil, GoCoop is a space dedicated to the power of cooperation. Here, cooperatives from around the world come together, organized by sector, to showcase their impact. More than just a directory, this is a place to connect, discover, and celebrate sustainable initiatives and the communities behind them —and we're just getting started. From Brazil, with love.",
     "sectionTwoTitle": "What are cooperatives?",
     "sectionTwo": "In a world where collaboration makes a difference, the cooperatives emerge as an example of union and collective prosperity. Unlike traditional companies, cooperatives are organizations formed and run by people with a common goal, where each member has a voice and where all members share the benefits.",
-    "phraseGreenBox": "Humanity towards others."
+    "linksTitle": "GoCoop is growing! Stay tuned as we work on new ways to connect and empower cooperatives worldwide.",
+    "phraseGreenBox": "Humanity towards others.",
+    "aria": {
+      "githubLink": "link to gocoop github organization page"
+    }
   },
   "details": {
     "metadata": {
