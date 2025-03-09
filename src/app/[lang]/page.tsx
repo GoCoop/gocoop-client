@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import InputField from "../../components/material/InputField/InputField";
 import Category from "../../components/material/Category/Category";
+import CategoriesLoader from "@/components/core/Skeletons/HomePage/CategoriesLoader";
 import Modal from "../../components/material/Modal/Modal";
 
 import SearchIcon from "../../icons/SearchIcon";
@@ -38,11 +40,71 @@ const getCategories = async (): Promise<CategoryT[] | null> => {
   return null;
 };
 
+type ContentProps = {
+  t: Pick<Awaited<ReturnType<typeof getDictionary>>, "home" | "categories">
+}
+
+const CategoriesContent = async({ t }: ContentProps) => {
+
+  const categories = await getCategories();
+
+  return (
+    <div className="grid grid-cols-2 gap-4 place-content-end sm:place-content-start sm:grid-cols-3">
+      {
+        categories &&
+          categories.slice(0, 3).map((cat, i) => (
+            <Link
+              key={cat.id}
+              href={{
+                pathname: "/search",
+                query: { category: cat.label },
+              }}
+              className={i == 2 ? 'hidden sm:flex' : ''}
+            >
+              <Category 
+                name={cat.name} 
+                icon={cat.icon} 
+                altImage={t.categories.alt}
+              />
+            </Link>
+          ))
+      }
+      
+      <Modal
+        button={{
+          name: t.home.btnSeeMore,
+          className: "w-full col-start-1 col-end-3 sm:col-end-4",
+        }}
+      >
+        <div className="grid gap-6">
+          <h2 className="text-xl">{t.home.selectCategory}</h2>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {categories &&
+              categories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={{
+                    pathname: "/search",
+                    query: { category: cat.label },
+                  }}
+                >
+                  <Category 
+                    name={cat.name} 
+                    icon={cat.icon} 
+                    altImage={t.categories.alt}
+                  />
+                </Link>
+              ))}
+          </div>
+        </div>
+      </Modal>
+    </div>
+  )
+};
+
 export default async function Home({ params }: Props) {
   const { lang } = await params;
   const t = await getDictionary(lang);
-
-  const categories = await getCategories();
 
   return (
     <>
@@ -64,57 +126,10 @@ export default async function Home({ params }: Props) {
           className="sm:w-[35rem]"
           redirectsTo="/search"
         />
-
-        <div className="grid grid-cols-2 gap-4 place-content-end sm:place-content-start sm:grid-cols-3">
-          {
-            categories &&
-              categories.slice(0, 3).map((cat, i) => (
-                <Link
-                  key={cat.id}
-                  href={{
-                    pathname: "/search",
-                    query: { category: cat.label },
-                  }}
-                  className={i == 2 ? 'hidden sm:flex' : ''}
-                >
-                  <Category 
-                    name={cat.name} 
-                    icon={cat.icon} 
-                    altImage={t.categories.alt}
-                  />
-                </Link>
-              ))
-          }
-          
-          <Modal
-            button={{
-              name: t.home.btnSeeMore,
-              className: "w-full col-start-1 col-end-3 sm:col-end-4",
-            }}
-          >
-            <div className="grid gap-6">
-              <h2 className="text-xl">{t.home.selectCategory}</h2>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                {categories &&
-                  categories.map((cat) => (
-                    <Link
-                      key={cat.id}
-                      href={{
-                        pathname: "/search",
-                        query: { category: cat.label },
-                      }}
-                    >
-                      <Category 
-                        name={cat.name} 
-                        icon={cat.icon} 
-                        altImage={t.categories.alt}
-                      />
-                    </Link>
-                  ))}
-              </div>
-            </div>
-          </Modal>
-        </div>
+        
+        <Suspense fallback={<CategoriesLoader />}>
+          <CategoriesContent t={t} />
+        </Suspense>
       </main>
     </>
   );
