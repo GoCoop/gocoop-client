@@ -24,6 +24,18 @@ export default function Header({ t }: Props): JSX.Element {
 
   useEffect(() => { setIsMenuOpen(false) }, [pathname]);
 
+  useEffect(() => {
+    const cb = (e: Event) => {
+      if ((e.target as ScreenOrientation).type.includes("landscape")) {
+        setIsMenuOpen(false);
+      };
+    };
+
+    screen.orientation.addEventListener("change", cb);
+
+    return () => screen.orientation.removeEventListener("change", cb);
+   }, []);
+
   return (
     <header
       className={`w-full p-6 fixed grid grid-cols-[max-content_1fr] grid-rows-[max-content_1fr] items-center justify-between border-b bg-white ${
