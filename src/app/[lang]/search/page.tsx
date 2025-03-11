@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 
 import InputField from "../../../components/material/InputField/InputField";
 
-import SearchResults from "./suspense/SearchResults";
-import { Loader as SearchLoader } from "./suspense/Loader";
+import SearchResults from "./suspense/searchResults/SearchResults";
+import { Loader as SearchLoader } from "./suspense/searchResults/Loader";
 import { Loader as CategoriesLoader } from "./suspense/categories/Loader";
 import CategoriesModal from "./suspense/categories/CategoriesModal";
 
