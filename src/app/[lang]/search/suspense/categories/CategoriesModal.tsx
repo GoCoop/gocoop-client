@@ -1,6 +1,7 @@
 import Category from "@/components/material/Category/Category";
 import CategorySelected from "@/components/material/CategorySelected/CategorySelected";
 import Modal from "@/components/material/Modal/Modal";
+import { getDictionary } from "@/dictionaries";
 import categories from "@/services/categories";
 import type { CategoriesT, CategoryT } from "@/services/categories/GET";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import Link from "next/link";
 type Props = {
   search?: string;
   category?: CategoriesT;
-  t: any;
+  t: Pick<Awaited<ReturnType<typeof getDictionary>>, "error" | "search" | "categories">;
 }
 
 function translateCategory(name: CategoriesT | undefined, data: CategoryT[] | null): CategoryT | undefined {

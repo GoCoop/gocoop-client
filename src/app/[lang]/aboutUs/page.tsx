@@ -19,7 +19,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function AboutUsPage({ params }: { params: { lang: Locales }}) {
+export default async function AboutUsPage({ params }: Props) {
 
   const { lang } = await params;
   const t = await getDictionary(lang);

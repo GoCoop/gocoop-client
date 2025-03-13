@@ -15,10 +15,10 @@ import type { CategoriesT } from "@/services/categories/GET";
 import { getDictionary, type Locales } from "@/dictionaries";
 
 type Props = {
-  searchParams: { 
+  searchParams: Promise<{ 
     search: string | undefined, 
     category: CategoriesT | undefined 
-  },
+  }>,
   params: Promise<{ search: string, lang: Locales }>
 }
 
