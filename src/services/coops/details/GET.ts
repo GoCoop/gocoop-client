@@ -1,4 +1,4 @@
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
 import type { CategoriesT } from "@/services/categories/GET";
 import type { Res } from "@/services/types/res";
 
@@ -29,14 +29,14 @@ export default async function GET(req: Req): Promise<Res<CoopDetailsT>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
   const url = `${apiUrl}/coops/${req.name}`;
 
-  const headersList = await headers();
-  const acceptLanguage = headersList.get('Accept-Language');
+  const cookiesStore = await cookies();
+  const userLang = cookiesStore.get("user_lang")?.value ?? "en";
 
   try {
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
-        "Accept-Language": acceptLanguage ?? 'en',
+        "Accept-Language": userLang,
       },
       method: "GET",
     });
