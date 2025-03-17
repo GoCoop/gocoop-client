@@ -7,7 +7,7 @@
   },
   "home": {
     "metadata": {
-      "description": "Página Home para pesquisa de cooperativas ao redor do mundo."
+      "description": "Descubra e conecte-se com cooperativas de diversos setores ao redor do mundo."
     },
     "title": "Descubra cooperativas de diferentes ramos em todo o planeta.",
     "inputPlaceholder": "Procure por uma cooperativa...",
@@ -18,13 +18,13 @@
     "error": "Pedimos desculpas! Houve um erro com a página de buscas.",
     "metadata": {
       "title": "pesquisa GoCoop",
-      "description": "Página para realizar busca de cooperativas ao redor do mundo com base no input e nas suas diferentes categorias."
+      "description": "Pesquise e encontre cooperativas de diferentes setores ao redor do mundo. Explore resultados detalhados por categoria e conecte-se com iniciativas sustentáveis alinhadas aos seus interesses."
     },
     "searchResults": {
       "imageAlt": "Logo da cooperativa"
     },
     "modalButton": "Selecione uma categoria ",
-    "modalTitle": "Seleciona uma categoria",
+    "modalTitle": "Selecione uma categoria",
     "filteringBy": "Filtrando por:",
     "inputPlaceholder": "Procure por uma cooperativa...",
     "notFound": "Nenhum resultado encontrado."
@@ -32,13 +32,14 @@
   "aboutUs": {
     "metadata": {
       "title": "Sobre Nós | GoCoop",
-      "description": "A página descreve o que é o site GoCoop e o seu objetivo em divulgar cooperativas ao redor do mundo."
+      "description": "Saiba mais sobre o GoCoop, uma plataforma dedicada a conectar pessoas e cooperativas de diversos setores ao redor do mundo. Nosso objetivo é fortalecer modelos econômicos colaborativos e sustentáveis."
     },
     "link": "Sobre Nós",
     "sectionOne": "Nascido no Brasil, o GoCoop é um espaço dedicado ao poder da cooperação. Aqui, cooperativas do mundo todo se reúnem, organizadas por setor, para mostrar seu impacto. Mais do que um diretório, este é um lugar para conectar, descobrir e celebrar iniciativas sustentáveis e as comunidades por trás delas —e estamos apenas começando. Do Brasil, com amor.",
     "sectionTwoTitle": "O que são cooperativas?",
     "sectionTwo": "Em um mundo onde a colaboração faz a diferença, as cooperativas surgem como um exemplo de união e prosperidade coletiva. Diferente de empresas tradicionais, as cooperativas são organizações formadas e geridas por pessoas com um propósito comum, onde todos os membros têm voz e dividem os benefícios.",
     "linksTitle": "GoCoop está crescendo! Fique de olho enquanto trabalhamos em novas formas de conectar e fortalecer cooperativas ao redor do mundo.",
+    "slogan": "Empoderando cooperativas através da tecnologia.",
     "phraseGreenBox": "Humanidade para todos.",
     "aria": {
       "githubLink": "link para a página gocoop organização no github"

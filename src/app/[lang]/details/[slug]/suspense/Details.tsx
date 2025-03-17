@@ -20,7 +20,7 @@ export default async function Details({ data, t }: Props) {
       <>
         <div className="grid grid-cols-[max-content_1fr] gap-x-4">
           <Image
-            className="row-start-1 row-end-3 rounded-full"
+            className="row-start-1 row-end-3 rounded-full place-self-center"
             src={data.image_url}
             alt={t.details.image.alt}
             width={70}

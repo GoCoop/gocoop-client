@@ -7,7 +7,7 @@
   },
   "home": {
     "metadata": {
-      "description": "Home page to search for cooperatives all over the world."
+      "description": "Explore and connect with cooperatives across different industries worldwide."
     },
     "title": "Discover cooperatives from all around the globe.",
     "inputPlaceholder": "Search for a cooperative...",
@@ -18,7 +18,7 @@
     "error": "We're sorry! But an error occurred with the search page.",
     "metadata": {
       "title": "search GoCoop",
-      "description": "Page to search for cooperatives all over the world based on user input and it's different categories."
+      "description": "Search and find cooperatives from different sectors worldwide. Explore detailed results by category and connect with sustainable initiatives aligned with your interests."
     },
     "searchResults": {
       "imageAlt": "Cooperative logo"
@@ -32,13 +32,14 @@
   "aboutUs": {
     "metadata": {
       "title": "About Us | GoCoop",
-      "description": "The page describes what the GoCoop website is all about and it's main goal to share info about cooperatives around the world."
+      "description": "Learn more about GoCoop, a platform dedicated to connecting people with cooperatives from various sectors worldwide. Our goal is to strengthen collaborative and sustainable economic models."
     },
     "link": "About Us",
     "sectionOne": "Born in Brazil, GoCoop is a space dedicated to the power of cooperation. Here, cooperatives from around the world come together, organized by sector, to showcase their impact. More than just a directory, this is a place to connect, discover, and celebrate sustainable initiatives and the communities behind them —and we're just getting started. From Brazil, with love.",
     "sectionTwoTitle": "What are cooperatives?",
     "sectionTwo": "In a world where collaboration makes a difference, the cooperatives emerge as an example of union and collective prosperity. Unlike traditional companies, cooperatives are organizations formed and run by people with a common goal, where each member has a voice and where all members share the benefits.",
     "linksTitle": "GoCoop is growing! Stay tuned as we work on new ways to connect and empower cooperatives worldwide.",
+    "slogan": "Empowering cooperatives through technology.",
     "phraseGreenBox": "Humanity towards others.",
     "aria": {
       "githubLink": "link to gocoop github organization page"
