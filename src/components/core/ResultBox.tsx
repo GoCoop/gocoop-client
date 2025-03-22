@@ -9,7 +9,7 @@ type Props = {
 
 export default function ResultBox(props: Props) {
   return (
-    <div className="p-6 border-x border-y rounded-lg grid grid-cols-[max-content_1fr] gap-x-4 cursor-pointer hover:bg-slate-100">
+    <div className="p-6 border-x border-y rounded-lg grid grid-cols-[max-content_1fr] gap-x-4 cursor-pointer hover:bg-slate-100 transition">
       <Image
         className="row-start-1 row-end-3 rounded-full place-self-center"
         src={props.imageUrl}

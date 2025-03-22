@@ -22,7 +22,7 @@ export default function CategorySelected({ search, name, icon, altImage }: Props
       <span>{name}</span>
       <Link
         href={`?search=${search}`}
-        className="rounded-lg bg-slate-100 hover:bg-red-200"
+        className="rounded-lg bg-slate-100 hover:bg-red-200 transition"
       >
         <div className="p-2 m-1 cursor-pointer rounded-lg text-sm ">X</div>
       </Link>

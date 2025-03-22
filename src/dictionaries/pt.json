@@ -2,12 +2,26 @@
   "header": {
     "aboutUs": "Sobre Nós"
   },
+  "metadata": {
+    "title": "Fundação GoCoop",
+    "description": "Empoderando cooperativas através da tecnologia.",
+    "openGraph": {
+      "title": "Fundação GoCoop",
+      "siteName": "Fundação GoCoop",
+      "description": "Empoderando cooperativas através da tecnologia.",
+      "alt": "GoCoop logo"
+    }
+  },
   "button": {
     "back": "Voltar"
   },
   "home": {
     "metadata": {
-      "description": "Descubra e conecte-se com cooperativas de diversos setores ao redor do mundo."
+      "description": "Descubra e conecte-se com cooperativas de diversos setores ao redor do mundo.",
+      "openGraph": {
+        "title": "Home | Fundação GoCoop",
+        "description": "Descubra e conecte-se com cooperativas de diversos setores ao redor do mundo."
+      }
     },
     "title": "Descubra cooperativas de diferentes ramos em todo o planeta.",
     "inputPlaceholder": "Procure por uma cooperativa...",
@@ -18,7 +32,11 @@
     "error": "Pedimos desculpas! Houve um erro com a página de buscas.",
     "metadata": {
       "title": "pesquisa GoCoop",
-      "description": "Pesquise e encontre cooperativas de diferentes setores ao redor do mundo. Explore resultados detalhados por categoria e conecte-se com iniciativas sustentáveis alinhadas aos seus interesses."
+      "description": "Pesquise e encontre cooperativas de diferentes setores ao redor do mundo. Explore resultados detalhados por categoria e conecte-se com iniciativas sustentáveis alinhadas aos seus interesses.",
+      "openGraph": {
+        "title": "pesquisa Fundação GoCoop",
+        "description": "Pesquise cooperativas de diversos setores ao redor do mundo."
+      }
     },
     "searchResults": {
       "imageAlt": "Logo da cooperativa"
@@ -32,17 +50,23 @@
   "aboutUs": {
     "metadata": {
       "title": "Sobre Nós | GoCoop",
-      "description": "Saiba mais sobre o GoCoop, uma plataforma dedicada a conectar pessoas e cooperativas de diversos setores ao redor do mundo. Nosso objetivo é fortalecer modelos econômicos colaborativos e sustentáveis."
+      "description": "Saiba mais sobre a Fundação GoCoop, uma plataforma dedicada a conectar pessoas e cooperativas de diversos setores ao redor do mundo. Nosso objetivo é fortalecer modelos econômicos colaborativos e sustentáveis.",
+      "openGraph": {
+        "title": "Sobre Nós | Fundação GoCoop ",
+        "description": "Saiba mais sobre a Fundação GoCoop, uma plataforma dedicada a conectar pessoas e cooperativas de diversos setores ao redor do mundo. Nosso objetivo é fortalecer modelos econômicos colaborativos e sustentáveis."
+      }
     },
     "link": "Sobre Nós",
-    "sectionOne": "Nascido no Brasil, o GoCoop é um espaço dedicado ao poder da cooperação. Aqui, cooperativas do mundo todo se reúnem, organizadas por setor, para mostrar seu impacto. Mais do que um diretório, este é um lugar para conectar, descobrir e celebrar iniciativas sustentáveis e as comunidades por trás delas —e estamos apenas começando. Do Brasil, com amor.",
+    "sectionOne": "Nascido no Brasil, a Fundação GoCoop é um espaço dedicado ao poder da cooperação. Aqui, cooperativas do mundo todo se reúnem, organizadas por setor, para mostrar seu impacto. Mais do que um diretório, este é um lugar para conectar, descobrir e celebrar iniciativas sustentáveis e as comunidades por trás delas —e estamos apenas começando. Do Brasil, com amor.",
+    "sectionOneWarning": "*A Fundação GoCoop está atualmente em fase beta e ainda em processo de formalização como entidade sem fins lucrativos.",
     "sectionTwoTitle": "O que são cooperativas?",
     "sectionTwo": "Em um mundo onde a colaboração faz a diferença, as cooperativas surgem como um exemplo de união e prosperidade coletiva. Diferente de empresas tradicionais, as cooperativas são organizações formadas e geridas por pessoas com um propósito comum, onde todos os membros têm voz e dividem os benefícios.",
-    "linksTitle": "GoCoop está crescendo! Fique de olho enquanto trabalhamos em novas formas de conectar e fortalecer cooperativas ao redor do mundo.",
+    "linksTitle": "Fundação GoCoop está crescendo! Fique de olho enquanto trabalhamos em novas formas de conectar e fortalecer cooperativas ao redor do mundo.",
     "slogan": "Empoderando cooperativas através da tecnologia.",
     "phraseGreenBox": "Humanidade para todos.",
     "aria": {
-      "githubLink": "link para a página gocoop organização no github"
+      "githubLink": "link para a página fundação gocoop organização no github",
+      "linkedInLink": "link para a página fundação gocoop no linkedin"
     }
   },
   "details": {

@@ -19,7 +19,7 @@ export default function RouterBack({ className, ariaLabel }: Props) {
         aria-label={ariaLabel}
       >
         <LeftArrowIcon
-          className="p-2 bg-slate-100 rounded-full hover:bg-slate-200"
+          className="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition"
           width={40}
           height={40}
         />

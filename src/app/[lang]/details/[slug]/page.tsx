@@ -23,7 +23,20 @@ export async function generateMetadata({
 
   return {
     title: `${slug} | GoCoop`,
-    description: t.details.metadata.initialDesc
+    description: t.details.metadata.initialDesc,
+    openGraph: {
+      title: `${slug} | GoCoop`,
+      description: t.details.metadata.initialDesc,
+      images: [
+        { 
+          url: process.env.NEXT_PUBLIC_METADATA_OPENGRAPH_IMAGE || '',
+          width: 1200,
+          height: 630,
+          alt: t.metadata.openGraph.alt
+        }
+      ],
+      type: 'website'
+    }
   };
 }
 

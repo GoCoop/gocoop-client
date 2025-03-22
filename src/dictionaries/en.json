@@ -2,12 +2,26 @@
   "header": {
     "aboutUs": "About Us"
   },
+  "metadata": {
+    "title": "GoCoop Foundation",
+    "description": "Empowering cooperatives through technology.",
+    "openGraph": {
+      "title": "GoCoop Foundation",
+      "siteName": "GoCoop Foundation",
+      "description": "Empowering cooperatives through technology.",
+      "alt": "GoCoop logo"
+    }
+  },
   "button": {
     "back": "Back"
   },
   "home": {
     "metadata": {
-      "description": "Explore and connect with cooperatives across different industries worldwide."
+      "description": "Explore and connect with cooperatives across different industries worldwide.",
+      "openGraph": {
+        "title": "Home | GoCoop Foundation",
+        "description": "Explore and connect with cooperatives across different industries worldwide."
+      }
     },
     "title": "Discover cooperatives from all around the globe.",
     "inputPlaceholder": "Search for a cooperative...",
@@ -18,7 +32,11 @@
     "error": "We're sorry! But an error occurred with the search page.",
     "metadata": {
       "title": "search GoCoop",
-      "description": "Search and find cooperatives from different sectors worldwide. Explore detailed results by category and connect with sustainable initiatives aligned with your interests."
+      "description": "Search and find cooperatives from different sectors worldwide. Explore detailed results by category and connect with sustainable initiatives aligned with your interests.",
+      "openGraph": {
+        "title": "search GoCoop Foundation",
+        "description": " Search and find cooperatives from different sectors worldwide."
+      }
     },
     "searchResults": {
       "imageAlt": "Cooperative logo"
@@ -32,17 +50,23 @@
   "aboutUs": {
     "metadata": {
       "title": "About Us | GoCoop",
-      "description": "Learn more about GoCoop, a platform dedicated to connecting people with cooperatives from various sectors worldwide. Our goal is to strengthen collaborative and sustainable economic models."
+      "description": "Learn more about GoCoop Foundation, a platform dedicated to connecting people with cooperatives from various sectors worldwide. Our goal is to strengthen collaborative and sustainable economic models.",
+      "openGraph": {
+        "title": "About Us | GoCoop Foundation",
+        "description": "Learn more about GoCoop Foundation, a platform dedicated to connecting people with cooperatives from various sectors worldwide. Our goal is to strengthen collaborative and sustainable economic models."
+      }
     },
     "link": "About Us",
-    "sectionOne": "Born in Brazil, GoCoop is a space dedicated to the power of cooperation. Here, cooperatives from around the world come together, organized by sector, to showcase their impact. More than just a directory, this is a place to connect, discover, and celebrate sustainable initiatives and the communities behind them —and we're just getting started. From Brazil, with love.",
+    "sectionOne": "Born in Brazil, GoCoop Foundation is a space dedicated to the power of cooperation. Here, cooperatives from around the world come together, organized by sector, to showcase their impact. More than just a directory, this is a place to connect, discover, and celebrate sustainable initiatives and the communities behind them —and we're just getting started. From Brazil, with love.",
+    "sectionOneWarning": "*GoCoop Foundation is currently in its beta phase and in the process of formalizing as a nonprofit entity.",
     "sectionTwoTitle": "What are cooperatives?",
     "sectionTwo": "In a world where collaboration makes a difference, the cooperatives emerge as an example of union and collective prosperity. Unlike traditional companies, cooperatives are organizations formed and run by people with a common goal, where each member has a voice and where all members share the benefits.",
-    "linksTitle": "GoCoop is growing! Stay tuned as we work on new ways to connect and empower cooperatives worldwide.",
+    "linksTitle": "GoCoop Foundation is growing! Stay tuned as we work on new ways to connect and empower cooperatives worldwide.",
     "slogan": "Empowering cooperatives through technology.",
     "phraseGreenBox": "Humanity towards others.",
     "aria": {
-      "githubLink": "link to gocoop github organization page"
+      "githubLink": "link to gocoop foundation github organization page",
+      "linkedInLink": "link to gocoop foundation linkedin page"
     }
   },
   "details": {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDictionary, type Locales } from "../../../dictionaries";
 import GithubIcon from "@/icons/GithubIcon";
 import Link from "next/link";
+import LinkedInIcon from "@/icons/LinkedInIcon";
 
 type Props = {
   params: Promise<{ lang: Locales }>
@@ -15,7 +16,21 @@ export async function generateMetadata({
 
   return {
     title: t.aboutUs.metadata.title,
-    description: t.aboutUs.metadata.description
+    description: t.aboutUs.metadata.description,
+    openGraph: {
+      title: t.aboutUs.metadata.openGraph.title,
+      description: t.aboutUs.metadata.openGraph.description,
+      siteName: t.metadata.openGraph.siteName,
+      images: [
+        { 
+          url: process.env.NEXT_PUBLIC_METADATA_OPENGRAPH_IMAGE || '',
+          width: 1200,
+          height: 630,
+          alt: t.metadata.openGraph.alt
+        }
+      ],
+      type: 'website'
+    }
   }
 }
 
@@ -33,6 +48,9 @@ export default async function AboutUsPage({ params }: Props) {
             <p>
               {t.aboutUs.sectionOne} 
             </p>
+            <span>
+              {t.aboutUs.sectionOneWarning}
+            </span>
             <h2>
               <i>
                 <b>{t.aboutUs.slogan}</b>
@@ -51,7 +69,7 @@ export default async function AboutUsPage({ params }: Props) {
             </h2>
 
             <nav>
-              <ul>
+              <ul className="flex items-center gap-4">
                 <li className="w-fit">
                   <Link
                     href={"https://github.com/GoCoop"}
@@ -62,6 +80,16 @@ export default async function AboutUsPage({ params }: Props) {
                     <GithubIcon />
                   </Link>  
                 </li>  
+                <li className="w-fit">
+                  <Link
+                    href={"https://www.linkedin.com/company/gocoop-foundation/"}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={t.aboutUs.aria.linkedInLink}
+                  >
+                    <LinkedInIcon />
+                  </Link>  
+                </li>
               </ul> 
             </nav>
           </section>

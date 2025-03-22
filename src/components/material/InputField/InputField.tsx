@@ -87,7 +87,7 @@ export default function InputField({
         defaultValue={defaultValue}
         className={`w-full p-4 ${[
           Icon ? "pl-10" : "p-4",
-        ]} border-x border-y rounded-2xl focus:outline-none focus:ring-2 focus:ring-mainColorTheme`}
+        ]} border-x border-y rounded-2xl focus:outline-none focus:ring-2 focus:ring-mainColorTheme transition`}
         placeholder={placeholder}
         onKeyDown={(e) => e.key === "Enter" && handleSubmit(searchInput)}
         onChange={(e) => setSearchInput(e.target.value)}

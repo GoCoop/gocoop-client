@@ -10,7 +10,13 @@ export default function robots(): MetadataRoute.Robots {
           "Bingbot", 
           "Duckduckbot",
           "Applebot",
-          "LinkedInBot"
+          "LinkedInBot",
+          "Twitterbot",
+          "facebookexternalhit",
+          "Pinterestbot",
+          "Discordbot",
+          "Yandex",
+          "Baiduspider"
         ],
         allow: ["/"],
       },

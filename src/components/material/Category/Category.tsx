@@ -16,7 +16,7 @@ export default function Category({
 }: Props): JSX.Element {
   return (
     <button
-      className={`w-full p-4 border-x border-y rounded-2xl flex flex-col gap-6 items-start hover:bg-slate-100 ${className}`}
+      className={`w-full p-4 border-x border-y rounded-2xl flex flex-col gap-6 items-start hover:bg-slate-100 transition ${className}`}
     >
       <Image 
         width={24}

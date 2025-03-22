@@ -28,6 +28,20 @@ export async function generateMetadata({
   return {
     title: "Home | GoCoop",
     description: t.home.metadata.description,
+    openGraph: {
+      title: t.home.metadata.openGraph.title,
+      description: t.home.metadata.openGraph.description,
+      siteName: t.metadata.openGraph.siteName,
+      images: [
+        { 
+          url: process.env.NEXT_PUBLIC_METADATA_OPENGRAPH_IMAGE || '',
+          width: 1200,
+          height: 630,
+          alt: t.metadata.openGraph.alt
+        }
+      ],
+      type: 'website'
+    }
   }
 }
 

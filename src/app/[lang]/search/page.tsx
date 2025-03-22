@@ -33,6 +33,19 @@ export async function generateMetadata({
   return {
     title: `${search ? search + " | " : ""}${t.search.metadata.title}`,
     description: t.search.metadata.description,
+    openGraph: {
+      title: t.search.metadata.openGraph.title,
+      description: t.search.metadata.openGraph.description,
+      images: [
+        { 
+          url: process.env.NEXT_PUBLIC_METADATA_OPENGRAPH_IMAGE || '',
+          width: 1200,
+          height: 630,
+          alt: t.metadata.openGraph.alt
+        }
+      ],
+      type: 'website'
+    }
   };
 }
 
