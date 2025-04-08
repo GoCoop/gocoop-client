@@ -1,33 +1,11 @@
 import { cookies } from "next/headers";
-import type { CategoriesT } from "@/services/categories/GET";
-import type { Res } from "@/services/types/res";
 
-type Req = {
-  name: string;
-};
+import type { CategoryT } from "@/api/models/categories";
+import type { Res } from "@/api/models/response";
 
-type CategoriesData = {
-  id: number;
-  name: string;
-  label: CategoriesT;
-  icon: string;
-}
-
-export type CoopDetailsT = {
-  id: number;
-  name: string;
-  image_url: string;
-  categories: CategoriesData[];
-  short_desc: string;
-  description: string;
-  country: string;
-  website_url: string;
-  workers: number;
-};
-
-export default async function GET(req: Req): Promise<Res<CoopDetailsT>> {
+export default async function getCategoriesService(): Promise<Res<CategoryT[]>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
-  const url = `${apiUrl}/coops/${req.name}`;
+  const url = `${apiUrl}/categories`;
 
   const cookiesStore = await cookies();
   const userLang = cookiesStore.get("user_lang")?.value ?? "en";
@@ -36,7 +14,7 @@ export default async function GET(req: Req): Promise<Res<CoopDetailsT>> {
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
-        "Accept-Language": userLang,
+        "Accept-Language": userLang 
       },
       method: "GET",
     });
@@ -59,7 +37,8 @@ export default async function GET(req: Req): Promise<Res<CoopDetailsT>> {
     return {
       data: null,
       success: false,
-      message: "Error during GET request. " + err,
+      message: "Error during GET requests. " + err,
     };
   }
 }
+

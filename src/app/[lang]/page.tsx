@@ -10,8 +10,8 @@ import Modal from "../../components/material/Modal/Modal";
 import SearchIcon from "../../icons/SearchIcon";
 import LogoIcon from "@/icons/Logo";
 
-import categories from "@/services/categories";
-import { type CategoryT } from "@/services/categories/GET";
+import { categories } from "@/api/controllers/categories";
+import type { CategoryT } from "@/api/models/categories";
 
 import { getDictionary, type Locales } from "@/dictionaries";
 
@@ -46,7 +46,7 @@ export async function generateMetadata({
 }
 
 const getCategories = async (): Promise<CategoryT[] | null> => {
-  const res = await categories.GET();
+  const res = await categories.GET.All();
   if (res.success) {
     return res.data;
   }

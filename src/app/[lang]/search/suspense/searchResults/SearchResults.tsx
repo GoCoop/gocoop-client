@@ -4,7 +4,8 @@ import ResultBox from "@/components/core/ResultBox";
 
 import SadFaceIcon from "@/icons/SadFaceIcon";
 
-import coops from "@/services/coops";
+import { coops } from "@/api/controllers/coops";
+
 import { getDictionary } from "@/dictionaries";
 
 type Props = {
@@ -15,10 +16,10 @@ type Props = {
 
 export default async function SearchResults({ search, category, t }: Props) {
 
-  const coopsData = await coops.GET({
+  const coopsData = await coops.GET.SearchFor({
     search: search,
-    category: category,
-  });
+    category: category
+  })
 
   return (
     <>
@@ -33,6 +34,7 @@ export default async function SearchResults({ search, category, t }: Props) {
                     desc={d.short_desc}
                     imageUrl={d.image_url}
                     imageAlt={t.search.searchResults.imageAlt}
+                    is_verified={d.is_verified}
                   />
                 </Link>
               )

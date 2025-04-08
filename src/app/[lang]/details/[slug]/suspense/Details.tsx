@@ -5,9 +5,10 @@ import LocationIcon from "@/icons/LocationIcon";
 import LinkIcon from "@/icons/LinkIcon";
 import ArmIcon from "@/icons/ArmIcon";
 
-import type { CoopDetailsT } from "@/services/coops/details/GET";
+import type { CoopDetailsT } from "@/api/models/coop";
 
 import { getDictionary } from "@/dictionaries";
+import CheckIcon from "@/icons/CheckIcon";
 
 type Props = {
   data: CoopDetailsT;
@@ -26,7 +27,10 @@ export default async function Details({ data, t }: Props) {
             width={70}
             height={70}
           />
-          <h1 className="text-lg self-center">{data.name}</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-lg self-center">{data.name}</h1>
+            {data.is_verified && <CheckIcon />} 
+          </div>
           <p className="text-sm">{data.short_desc}</p>
         </div>
 

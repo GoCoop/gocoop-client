@@ -10,7 +10,7 @@ import CategoriesModal from "./suspense/categories/CategoriesModal";
 
 import SearchIcon from "../../../icons/SearchIcon";
 
-import type { CategoriesT } from "@/services/categories/GET";
+import type { CategoriesT } from "@/api/models/categories";
 
 import { getDictionary, type Locales } from "@/dictionaries";
 

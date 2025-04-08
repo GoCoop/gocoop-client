@@ -4,6 +4,8 @@ import "./globals.css";
 import { i18n, type Locale } from "../../../i18-config";
 import Header from "@/components/core/Header";
 import { getDictionary } from "@/dictionaries";
+import PageConfigProvider from "@/context/PageConfigContext";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,8 +67,12 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header t={t.header}/>
-        {children}
+        <Suspense fallback={null}>
+          <PageConfigProvider>
+            <Header t={t.header}/>
+            {children}
+          </PageConfigProvider>  
+        </Suspense> 
       </body>
     </html>
   );

@@ -1,9 +1,9 @@
 import type { MetadataRoute } from 'next'
-import coops from '@/services/coops';
+import { coops } from '@/api/controllers/coops';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
-  const res = await coops.GET({search: '', category: ''});
+  const res = await coops.GET.SearchFor({search: '', category: ''});
 
   const slugs = res.data ? res.data : [];
 

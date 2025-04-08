@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
-import { getDictionary, type Locales } from "../../../dictionaries";
-import GithubIcon from "@/icons/GithubIcon";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+import { getDictionary, type Locales } from "../../../dictionaries";
+
+import GithubIcon from "@/icons/GithubIcon";
 import LinkedInIcon from "@/icons/LinkedInIcon";
 
 type Props = {

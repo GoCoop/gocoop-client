@@ -1,8 +1,10 @@
+import CheckIcon from "@/icons/CheckIcon";
 import Image from "next/image";
 
 type Props = {
   name: string;
   desc: string;
+  is_verified: boolean;
   imageUrl: string;
   imageAlt: string;
 };
@@ -17,7 +19,10 @@ export default function ResultBox(props: Props) {
         width={50}
         height={50}
       />
-      <h1 className="text-lg">{props.name}</h1>
+      <div className="flex items-center gap-2">
+        <h1 className="text-lg">{props.name}</h1>
+        {props.is_verified && <CheckIcon />}
+      </div>
       <p className="text-sm">{props.desc}</p>
     </div>
   );

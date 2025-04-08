@@ -1,23 +1,11 @@
 import { cookies } from "next/headers";
-import type { Res } from "../types/res";
+import type { Res } from "@/api/models/response";
+import type { CoopDetailsT } from "@/api/models/coop";
+import type { Req } from "@/api/controllers/coop/GET";
 
-export type CategoriesT = 
-"logo" 
-| "industry" 
-| "coffee" 
-| "beer" 
-| "music";
-
-export type CategoryT = {
-  id: number;
-  name: string;
-  label: CategoriesT;
-  icon: string;
-};
-
-export default async function GET(): Promise<Res<CategoryT[]>> {
+export default async function getCoopDetailsService(req: Req): Promise<Res<CoopDetailsT>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
-  const url = `${apiUrl}/categories`;
+  const url = `${apiUrl}/coops/${req.name}`;
 
   const cookiesStore = await cookies();
   const userLang = cookiesStore.get("user_lang")?.value ?? "en";
@@ -26,7 +14,7 @@ export default async function GET(): Promise<Res<CategoryT[]>> {
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
-        "Accept-Language": userLang 
+        "Accept-Language": userLang,
       },
       method: "GET",
     });
@@ -49,7 +37,7 @@ export default async function GET(): Promise<Res<CategoryT[]>> {
     return {
       data: null,
       success: false,
-      message: "Error during GET requests. " + err,
+      message: "Error during GET request. " + err,
     };
   }
 }

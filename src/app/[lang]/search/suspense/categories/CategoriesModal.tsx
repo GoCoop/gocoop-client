@@ -1,10 +1,14 @@
+import Link from "next/link";
+
 import Category from "@/components/material/Category/Category";
 import CategorySelected from "@/components/material/CategorySelected/CategorySelected";
+
 import Modal from "@/components/material/Modal/Modal";
+
 import { getDictionary } from "@/dictionaries";
-import categories from "@/services/categories";
-import type { CategoriesT, CategoryT } from "@/services/categories/GET";
-import Link from "next/link";
+
+import { categories } from "@/api/controllers/categories";
+import type { CategoriesT, CategoryT } from "@/api/models/categories";
 
 type Props = {
   search?: string;
@@ -21,7 +25,7 @@ function translateCategory(name: CategoriesT | undefined, data: CategoryT[] | nu
 
 export default async function CategoriesModal({ search, category, t }: Props) {
 
-  const categoriesData = await categories.GET();
+  const categoriesData = await categories.GET.All();
   if (!categoriesData.success) {
     throw new Error(t.error.requests.categories);
   };

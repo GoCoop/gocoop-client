@@ -1,21 +1,10 @@
 import { cookies } from "next/headers";
-import type { Res } from "../types/res";
 
-type Req = {
-  search: string;
-  category: string;
-};
+import type { Coop } from "@/api/models/coops";
+import type { Req } from "@/api/controllers/coops/GET";
+import type { Res } from "@/api/models/response";
 
-type Coop = {
-  id: number;
-  slug: string;
-  name: string;
-  category: string;
-  short_desc: string;
-  image_url: string;
-};
-
-export default async function GET(req: Req): Promise<Res<Coop[]>> {
+export default async function getCoopsService(req: Req): Promise<Res<Coop[]>> {
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL;
   const url = `${apiUrl}/coops?query=${encodeURIComponent(
     req.search

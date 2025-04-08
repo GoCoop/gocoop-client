@@ -1,7 +1,11 @@
 "use client";
 
+import { useContext } from "react";
+import Link from "next/link";
+
+import { PageConfigContext } from "@/context/PageConfigContext";
+
 import LeftArrowIcon from "@/icons/LeftArrowIcon";
-import { useRouter } from "next/navigation";
 
 type Props = {
   className?: string;
@@ -9,21 +13,25 @@ type Props = {
 };
 
 export default function RouterBack({ className, ariaLabel }: Props) {
-  const router = useRouter();
+  const { prevPath } = useContext(PageConfigContext);
 
   return (
     <>
-      <button
-        className={`w-fit flex items-center gap-4 ${className}`}
-        onClick={() => router.back()}
-        aria-label={ariaLabel}
+      <Link
+        className={`w-fit ${className}`}
+        href={prevPath === '' ? '/search' : prevPath}
       >
-        <LeftArrowIcon
-          className="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition"
-          width={40}
-          height={40}
-        />
-      </button> 
+        <button
+          className={`flex items-center gap-4`}
+          aria-label={ariaLabel}
+        >
+          <LeftArrowIcon
+            className="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition"
+            width={40}
+            height={40}
+          />
+        </button>
+      </Link> 
     </>
   );
 }

@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 import RouterBack from "@/components/core/RouterBack";
 
-import coops from "@/services/coops";
+import { coop } from "@/api/controllers/coop";
 import { getDictionary, type Locales } from "@/dictionaries";
 
 import Details from "./suspense/Details";
@@ -47,7 +47,7 @@ async function DetailsWrapper({
   slug: string, 
   t: Awaited<ReturnType<typeof getDictionary>> 
 }) {
-  const res = await coops.details.GET({ name: slug });
+  const res = await coop.GET.details({ name: slug });
 
   if (!res.success) {
     throw new Error(t.error.detailsPage);
