@@ -59,7 +59,7 @@ export default async function SearchPage({
 
   return (
     <>
-      <main className="p-6 grid gap-8 sm:justify-center">
+      <main className="p-6 pb-10 grid gap-8 sm:justify-center">
         <InputField
           id="main-search"
           name="search"

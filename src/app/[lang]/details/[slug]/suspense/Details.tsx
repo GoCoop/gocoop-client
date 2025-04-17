@@ -4,11 +4,13 @@ import Link from "next/link";
 import LocationIcon from "@/icons/LocationIcon";
 import LinkIcon from "@/icons/LinkIcon";
 import ArmIcon from "@/icons/ArmIcon";
+import CheckIcon from "@/icons/CheckIcon";
 
 import type { CoopDetailsT } from "@/api/models/coop";
 
+import formatURL from "@/helpers/formatURL";
+
 import { getDictionary } from "@/dictionaries";
-import CheckIcon from "@/icons/CheckIcon";
 
 type Props = {
   data: CoopDetailsT;
@@ -65,7 +67,7 @@ export default async function Details({ data, t }: Props) {
               className="underline text-[#0000EE]"
               rel="noopener"
             >
-              {data.website_url}
+              {formatURL(data.website_url)}
             </Link>
           ) : (
             <span>N/I</span>
