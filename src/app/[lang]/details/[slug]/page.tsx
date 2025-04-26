@@ -9,58 +9,50 @@ import { getDictionary, type Locales } from "@/dictionaries";
 import Details from "./suspense/Details";
 import Loader from "./suspense/Loader";
 
-import MetadataUpdater from "@/utils/MetadataUpdater";
-
 type Props = {
-  params: Promise<{ slug: string, lang: Locales }>;
+  params: Promise<{ slug: string; lang: Locales }>;
 };
 
-export async function generateMetadata({ 
-  params 
-}: Props): Promise<Metadata> {
-  const { lang, slug } = (await params);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang, slug } = await params;
+  const res = await coop.GET.details({ name: slug });
   const t = await getDictionary(lang);
 
+  if (!res.success || !res.data) throw new Error(t.error.detailsPage);
+
   return {
-    title: `${slug} | GoCoop`,
-    description: t.details.metadata.initialDesc,
+    title: `${res.data.name} | GoCoop`,
+    description: res.data.short_desc,
     openGraph: {
-      title: `${slug} | GoCoop`,
-      description: t.details.metadata.initialDesc,
+      title: `${res.data.name} | GoCoop`,
+      description: res.data.short_desc,
       images: [
-        { 
-          url: process.env.NEXT_PUBLIC_METADATA_OPENGRAPH_IMAGE || '',
+        {
+          url: res.data.image_url,
           width: 1200,
           height: 630,
-          alt: t.metadata.openGraph.alt
-        }
+          alt: "coop logo",
+        },
       ],
-      type: 'website'
-    }
+      type: "website",
+    },
   };
 }
 
-async function DetailsWrapper({ 
-  slug, 
-  t 
-}: { 
-  slug: string, 
-  t: Awaited<ReturnType<typeof getDictionary>> 
+async function DetailsWrapper({
+  slug,
+  t,
+}: {
+  slug: string;
+  t: Awaited<ReturnType<typeof getDictionary>>;
 }) {
   const res = await coop.GET.details({ name: slug });
 
-  if (!res.success) {
-    throw new Error(t.error.detailsPage);
-  };
+  if (!res.success || !res.data) throw new Error(t.error.detailsPage);
 
   return (
     <>
-      <MetadataUpdater
-        title={`${res.data ? res.data.name : "N/I"} | GoCoop`}
-        description={res.data ? res.data.short_desc : "N/I"}
-      />
-
-      <Details data={res.data!} t={t} />
+      <Details data={res.data} t={t} />
     </>
   );
 }
@@ -72,9 +64,9 @@ export default async function DetailsPage({ params }: Props) {
   return (
     <>
       <main className="p-6 pb-10 grid gap-4 sm:justify-center">
-        <RouterBack 
-          className="mt-[5rem]" 
-          ariaLabel={t.details.routerBack.ariaLabel} 
+        <RouterBack
+          className="mt-[5rem]"
+          ariaLabel={t.details.routerBack.ariaLabel}
         />
 
         <Suspense fallback={<Loader />}>

@@ -8,18 +8,18 @@ import CheckIcon from "@/icons/CheckIcon";
 
 import type { CoopDetailsT } from "@/api/models/coop";
 
-import formatURL from "@/helpers/formatURL";
+import helpers from "@/helpers";
 
 import { getDictionary } from "@/dictionaries";
 
 type Props = {
   data: CoopDetailsT;
   t: Pick<Awaited<ReturnType<typeof getDictionary>>, "details" | "categories">;
-}
+};
 
 export default async function Details({ data, t }: Props) {
   return (
-    data && 
+    data && (
       <>
         <div className="grid grid-cols-[max-content_1fr] gap-x-4">
           <Image
@@ -31,7 +31,7 @@ export default async function Details({ data, t }: Props) {
           />
           <div className="flex items-center gap-2">
             <h1 className="text-lg self-center">{data.name}</h1>
-            {data.is_verified && <CheckIcon />} 
+            {data.is_verified && <CheckIcon />}
           </div>
           <p className="text-sm">{data.short_desc}</p>
         </div>
@@ -39,8 +39,11 @@ export default async function Details({ data, t }: Props) {
         <div className="flex items-center gap-2">
           {data.categories &&
             data.categories.map((c) => (
-              <div key={c.id} className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2">
-                <Image 
+              <div
+                key={c.id}
+                className="w-fit p-3 border-y border-x rounded-lg flex items-center gap-2"
+              >
+                <Image
                   width={24}
                   height={24}
                   src={c.icon}
@@ -67,16 +70,17 @@ export default async function Details({ data, t }: Props) {
               className="underline text-[#0000EE]"
               rel="noopener"
             >
-              {formatURL(data.website_url)}
+              {helpers.formatURL(data.website_url)}
             </Link>
           ) : (
             <span>N/I</span>
           )}
         </div>
         <div className="p-3 border-y border-x rounded-lg flex items-center gap-2">
-          <ArmIcon /> 
-          {data.workers} {t.details.workers} 
+          <ArmIcon />
+          {data.workers} {t.details.workers}
         </div>
       </>
-  )
+    )
+  );
 }
